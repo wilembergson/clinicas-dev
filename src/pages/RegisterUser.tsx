@@ -54,9 +54,13 @@ export default function Register(){
         }
         else{
             setFormData({ ...formData, cpf: value })
-        }
-        
-        
+        }   
+    }
+    function handleKeyDown(event:any){
+    if (event.key === 'Backspace' && formData.cpf.length===1) {
+        setFormData({ ...formData, cpf: '' })
+      console.log('Backspace key pressed OK');
+    }
     }
     return(
         <RegisterBody>
@@ -65,6 +69,7 @@ export default function Register(){
                 <Input
                     placeholder="CPF"
                     type="text"
+                    onKeyDown={handleKeyDown}
                     onChange={(e) => normalizeCPFnumber(e.target.value)}
                     name="cpf"
                     value={formData.cpf}
