@@ -1,8 +1,11 @@
 import { useState } from "react"
 import DatePicker from "react-modern-calendar-datepicker"
+import { toast, ToastContainer } from "react-toastify"
 import styled from "styled-components"
+import api from "../api/ApiConections"
 
 import { Button, Form, Input } from "../components/SaredStyles"
+import { erroMessage, sucessMessage } from "../utils/toasts"
 
 export type userBody = {
     cpf:string,
@@ -15,6 +18,8 @@ export type userBody = {
 }
 
 export default function Register(){
+    const [loading, setLoading] = useState(false)
+    
     const initalData:userBody = {
         cpf:'',
         name:'',
@@ -57,75 +62,90 @@ export default function Register(){
         }   
     }
     function handleKeyDown(event:any){
-        if (event.key === 'Backspace' && formData.cpf.length===1) {
+        if (event.key === 'Backspace' && formData.cpf.length===1){
             setFormData({ ...formData, cpf: '' })
-          console.log('Backspace key pressed OK');
+        }
+    }
+
+    async function handleSubmit(e:any){
+        e.preventDefault()
+        const user = {...formData}
+        try{
+            const { data } = await api.createUser(user)
+            console.log(data)
+            sucessMessage(data.message)
+        }catch(error:any){
+            console.log(error)
+            const errorMessage:string = error.response.data.error
+            erroMessage(errorMessage)
         }
     }
     return(
         <RegisterBody>
-            <div>Cadastro de Usuário - {formData.cpf}</div>
-            <Form>
-                <Input
-                    placeholder="CPF"
-                    type="text"
-                    onKeyDown={handleKeyDown}
-                    onChange={(e) => normalizeCPFnumber(e.target.value)}
-                    name="cpf"
-                    value={formData.cpf}
-                    required
-                />
-                <Input
-                    placeholder="Nome"
-                    type="nome"
-                    onChange={(e) => handleChange(e)}
-                    name="name"
-                    value={formData.name}
-                    required
-                />
-                <Input
-                    placeholder="DD/MMM/YYYY"
-                    type="date"
-                    onChange={(e) => handleChange(e)}
-                    name="birthDate"
-                    value={formData.birthDate}
-                    required
-                />
-                <Input
-                    placeholder="Telefone"
-                    type="number"
-                    onChange={(e) => handleChange(e)}
-                    name="phone"
-                    value={formData.phone}
-                    required
-                />
-                <Input
-                    placeholder="Email"
-                    type="email"
-                    onChange={(e) => handleChange(e)}
-                    name="email"
-                    value={formData.email}
-                    required
-                />
-                <Input
-                    placeholder="Senha"
-                    type="password"
-                    onChange={(e) => handleChange(e)}
-                    name="password"
-                    value={formData.password}
-                    required
-                />
-                <Input
-                    placeholder="Repita a senha"
-                    type="password"
-                    onChange={(e) => handleChange(e)}
-                    name="repeatPassword"
-                    value={formData.repeatPassword}
-                    required
-                />
-                <Button>Cadastrar</Button>
-            </Form>
-
+            <ToastContainer/>
+            <>
+                <div>Cadastro de Usuário - {formData.cpf}</div>
+                <Form onSubmit={handleSubmit}>
+                    <Input
+                        placeholder="CPF"
+                        type="text"
+                        onKeyDown={handleKeyDown}
+                        onChange={(e) => normalizeCPFnumber(e.target.value)}
+                        name="cpf"
+                        value={formData.cpf}
+                        required
+                    />
+                    <Input
+                        placeholder="Nome"
+                        type="nome"
+                        onChange={(e) => handleChange(e)}
+                        name="name"
+                        value={formData.name}
+                        required
+                    />
+                    <Input
+                        placeholder="DD/MMM/YYYY"
+                        type="date"
+                        onChange={(e) => handleChange(e)}
+                        name="birthDate"
+                        value={formData.birthDate}
+                        required
+                    />
+                    <Input
+                        placeholder="Telefone"
+                        type="number"
+                        onChange={(e) => handleChange(e)}
+                        name="phone"
+                        value={formData.phone}
+                        required
+                    />
+                    <Input
+                        placeholder="Email"
+                        type="email"
+                        onChange={(e) => handleChange(e)}
+                        name="email"
+                        value={formData.email}
+                        required
+                    />
+                    <Input
+                        placeholder="Senha"
+                        type="password"
+                        onChange={(e) => handleChange(e)}
+                        name="password"
+                        value={formData.password}
+                        required
+                    />
+                    <Input
+                        placeholder="Repita a senha"
+                        type="password"
+                        onChange={(e) => handleChange(e)}
+                        name="repeatPassword"
+                        value={formData.repeatPassword}
+                        required
+                    />
+                    <Button>Cadastrar</Button>
+                </Form>
+            </>
         </RegisterBody>
     )
 }
