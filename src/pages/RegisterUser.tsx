@@ -1,8 +1,8 @@
 import { useState } from "react"
-import ReactInputMask from "react-input-mask"
+import DatePicker from "react-modern-calendar-datepicker"
 import styled from "styled-components"
 
-import { Form, Input } from "../components/SaredStyles"
+import { Button, Form, Input } from "../components/SaredStyles"
 
 export type userBody = {
     cpf:string,
@@ -57,14 +57,14 @@ export default function Register(){
         }   
     }
     function handleKeyDown(event:any){
-    if (event.key === 'Backspace' && formData.cpf.length===1) {
-        setFormData({ ...formData, cpf: '' })
-      console.log('Backspace key pressed OK');
-    }
+        if (event.key === 'Backspace' && formData.cpf.length===1) {
+            setFormData({ ...formData, cpf: '' })
+          console.log('Backspace key pressed OK');
+        }
     }
     return(
         <RegisterBody>
-            <div>Cadastro de Usuário</div>
+            <div>Cadastro de Usuário - {formData.cpf}</div>
             <Form>
                 <Input
                     placeholder="CPF"
@@ -83,6 +83,47 @@ export default function Register(){
                     value={formData.name}
                     required
                 />
+                <Input
+                    placeholder="DD/MMM/YYYY"
+                    type="date"
+                    onChange={(e) => handleChange(e)}
+                    name="birthDate"
+                    value={formData.birthDate}
+                    required
+                />
+                <Input
+                    placeholder="Telefone"
+                    type="number"
+                    onChange={(e) => handleChange(e)}
+                    name="phone"
+                    value={formData.phone}
+                    required
+                />
+                <Input
+                    placeholder="Email"
+                    type="email"
+                    onChange={(e) => handleChange(e)}
+                    name="email"
+                    value={formData.email}
+                    required
+                />
+                <Input
+                    placeholder="Senha"
+                    type="password"
+                    onChange={(e) => handleChange(e)}
+                    name="password"
+                    value={formData.password}
+                    required
+                />
+                <Input
+                    placeholder="Repita a senha"
+                    type="password"
+                    onChange={(e) => handleChange(e)}
+                    name="repeatPassword"
+                    value={formData.repeatPassword}
+                    required
+                />
+                <Button>Cadastrar</Button>
             </Form>
 
         </RegisterBody>

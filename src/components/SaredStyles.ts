@@ -1,5 +1,8 @@
 import styled from "styled-components";
-import InputMa from "react-input-mask"
+
+export const title = styled.h2`
+    
+`
 
 export const Form = styled.form`
   width: 380px;
