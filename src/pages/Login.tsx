@@ -80,4 +80,7 @@ const LoginForm = styled.section`
     justify-content: center;
     flex-direction: column;
     position: relative;
+    @media (max-width:399px){
+        align-items: center;
+    }
 `

@@ -16,6 +16,9 @@ export const Form = styled.form`
   gap: 5px;
   margin-top: 20px;
   margin-bottom: 30px;
+  @media (max-width:399px){
+        align-items: center;
+    }
 `
 
 export const Label = styled.label`
@@ -27,6 +30,9 @@ export const Label = styled.label`
   color: ${colors.primary};
   margin-top: 8px;
   margin-left: 5px;
+  @media (max-width:399px){
+        width: 80%;
+    }
 `
 
 export const Input = styled.input`
@@ -41,18 +47,19 @@ export const Input = styled.input`
   border: 1px solid rgba(120, 177, 89, 0.25);
   border-radius: 7px;
   box-shadow: 0px 4px 24px rgba(120, 177, 89, 0.12);
-
   ::placeholder {
     color: #9C9C9C;
     font-family: 'Lexend Deca', sans-serif;
   }
+  @media (max-width:399px){
+        width: 80%;
+    }
 `
 
 export const Button = styled.button`
   all: unset;
   box-sizing: border-box;
   cursor: pointer;
-
   width: 100%;
   margin-top: 40px;
   margin-left: 10px;
@@ -61,7 +68,6 @@ export const Button = styled.button`
   font-weight: 400;
   font-size: 24px;
   line-height: 15px;
-
   color: #FFFFFF;
   text-align: center;
   padding: 10px;
@@ -69,4 +75,13 @@ export const Button = styled.button`
   border-radius: 8px;
   width: 100%;
   height: 60px;
+  transition: 0.7s ease;
+  :hover{
+        color: #fff;
+        background: rgb(135, 129, 214);
+        transition: 0.7s ease;
+    }
+    @media (max-width:399px){
+        width: 80%;
+    }
 `
