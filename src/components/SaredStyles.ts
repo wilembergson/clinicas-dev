@@ -3,17 +3,29 @@ import styled from "styled-components";
 export const Title = styled.h2`
     margin-top: 60px;
     font-size: 30px;
-    color: blue;
+    color: #6470df;
+    font-family: 'Oxygen', sans-serif;
 `
 
 export const Form = styled.form`
-  width: 380px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   gap: 5px;
+  margin-top: 20px;
   margin-bottom: 30px;
+`
+
+export const Label = styled.label`
+  font-family: 'Oxygen', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 15px;
+  color: #6470df;
+  margin-top: 8px;
+  margin-left: 5px;
 `
 
 export const Input = styled.input`
@@ -26,7 +38,7 @@ export const Input = styled.input`
   padding: 15px;
   margin: 5px;
   border: 1px solid rgba(120, 177, 89, 0.25);
-  border-radius: 12px;
+  border-radius: 7px;
   box-shadow: 0px 4px 24px rgba(120, 177, 89, 0.12);
 
   ::placeholder {
@@ -41,8 +53,9 @@ export const Button = styled.button`
   cursor: pointer;
 
   width: 100%;
-  margin-top: 30px;
-  font-family: 'Lexend Deca', sans-serif;
+  margin-top: 40px;
+  margin-left: 10px;
+  font-family: 'Oxygen', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -51,11 +64,10 @@ export const Button = styled.button`
   color: #FFFFFF;
   text-align: center;
   padding: 10px;
-  background: blue;
-  border-radius: 12px;
-  width: 207px;
+  background: #6470df;
+  border-radius: 8px;
+  width: 100%;
   height: 60px;
-
 `
 
 export const Container = styled.div`

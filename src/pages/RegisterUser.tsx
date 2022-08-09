@@ -5,7 +5,7 @@ import { ToastContainer } from "react-toastify"
 import styled from "styled-components"
 import api from "../api/ApiConections"
 
-import { Button, Container, Form, Input, Title } from "../components/SaredStyles"
+import { Button, Container, Form, Input, Label, Title } from "../components/SaredStyles"
 import { erroMessage, sucessMessage } from "../utils/toasts"
 
 export type userBody = {
@@ -22,7 +22,7 @@ export default function Register(){
     const navigation = useNavigate()
     const [loading, setLoading] = useState(false)
     
-    const initalData:userBody = {
+    const initialData:userBody = {
         cpf:'',
         name:'',
         birthDate:'',
@@ -31,7 +31,7 @@ export default function Register(){
         password:'',
         repeatPassword:''
     }
-    const [formData, setFormData] = useState(initalData)
+    const [formData, setFormData] = useState(initialData)
 
     function handleChange({ target }:any) {
         setFormData({ ...formData, [target.name]: target.value })
@@ -91,8 +91,9 @@ export default function Register(){
             <>
                 <Title>Cadastro de Usuário</Title>
                 <Form onSubmit={handleSubmit}>
+                <Label>CPF</Label>
                     <Input
-                        placeholder="CPF"
+                        placeholder="Ex: 999.999.999-99"
                         type="text"
                         onKeyDown={handleKeyDown}
                         onChange={(e) => normalizeCPFnumber(e.target.value)}
@@ -100,30 +101,33 @@ export default function Register(){
                         value={formData.cpf}
                         required
                     />
+                    <Label>NOME</Label>
                     <Input
-                        placeholder="Nome"
+                        placeholder="Nome completo"
                         type="nome"
                         onChange={(e) => handleChange(e)}
                         name="name"
                         value={formData.name}
                         required
                     />
+                    <Label>DATA DE NACIMENTO</Label>
                     <Input
-                        placeholder="DD/MMM/YYYY"
                         type="date"
                         onChange={(e) => handleChange(e)}
                         name="birthDate"
                         value={formData.birthDate}
                         required
                     />
+                    <Label>TELEFONE</Label>
                     <Input
-                        placeholder="Telefone"
+                        placeholder="Ex: 77988885555"
                         type="number"
                         onChange={(e) => handleChange(e)}
                         name="phone"
                         value={formData.phone}
                         required
                     />
+                    <Label>EMAIL</Label>
                     <Input
                         placeholder="Email"
                         type="email"
@@ -132,14 +136,16 @@ export default function Register(){
                         value={formData.email}
                         required
                     />
+                    <Label>SENHA</Label>
                     <Input
-                        placeholder="Senha"
+                        placeholder="No mínimo 8 dígitos"
                         type="password"
                         onChange={(e) => handleChange(e)}
                         name="password"
                         value={formData.password}
                         required
                     />
+                    <Label>REPITA A SENHA</Label>
                     <Input
                         placeholder="Repita a senha"
                         type="password"
@@ -150,15 +156,15 @@ export default function Register(){
                     />
                     <Button>Cadastrar</Button>
                 </Form>
-            </> : <Container><Spin color="#94a051" width="150px" height="150px"/></Container>} 
+            </> : <Container><Spin color="#5d51a0" width="150px" height="150px"/></Container>} 
         </RegisterBody>
     )
 }
 
 const RegisterBody = styled.section`
     display: flex;
+    width: 500px;
     justify-content: center;
     flex-direction: column;
-    
-    overflow: hidden;
+    position: relative;
 `
