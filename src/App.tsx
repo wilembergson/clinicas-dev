@@ -10,7 +10,7 @@ export default function App() {
     const [token, setToken] = useState('')
     
     return (
-      <UserContext.Provider value={token}>
+      <UserContext.Provider value={{token, setToken}}>
         <AppBody>
             <Header/>
             <BrowserRouter>
