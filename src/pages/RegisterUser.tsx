@@ -1,10 +1,11 @@
 import { useState } from "react"
-import DatePicker from "react-modern-calendar-datepicker"
-import { toast, ToastContainer } from "react-toastify"
+import { Spin } from "react-cssfx-loading"
+import { useNavigate } from "react-router-dom"
+import { ToastContainer } from "react-toastify"
 import styled from "styled-components"
 import api from "../api/ApiConections"
 
-import { Button, Form, Input } from "../components/SaredStyles"
+import { Button, Container, Form, Input, Title } from "../components/SaredStyles"
 import { erroMessage, sucessMessage } from "../utils/toasts"
 
 export type userBody = {
@@ -18,6 +19,7 @@ export type userBody = {
 }
 
 export default function Register(){
+    const navigation = useNavigate()
     const [loading, setLoading] = useState(false)
     
     const initalData:userBody = {
@@ -69,13 +71,15 @@ export default function Register(){
 
     async function handleSubmit(e:any){
         e.preventDefault()
+        setLoading(true)
         const user = {...formData}
         try{
             const { data } = await api.createUser(user)
             console.log(data)
             sucessMessage(data.message)
+            setTimeout(()=> navigation('/login'), 3000)
         }catch(error:any){
-            console.log(error)
+            setLoading(false)
             const errorMessage:string = error.response.data.error
             erroMessage(errorMessage)
         }
@@ -83,8 +87,9 @@ export default function Register(){
     return(
         <RegisterBody>
             <ToastContainer/>
+            {(loading===false) ? 
             <>
-                <div>Cadastro de Usuário - {formData.cpf}</div>
+                <Title>Cadastro de Usuário</Title>
                 <Form onSubmit={handleSubmit}>
                     <Input
                         placeholder="CPF"
@@ -145,7 +150,7 @@ export default function Register(){
                     />
                     <Button>Cadastrar</Button>
                 </Form>
-            </>
+            </> : <Container><Spin color="#94a051" width="150px" height="150px"/></Container>} 
         </RegisterBody>
     )
 }
@@ -154,4 +159,6 @@ const RegisterBody = styled.section`
     display: flex;
     justify-content: center;
     flex-direction: column;
+    
+    overflow: hidden;
 `

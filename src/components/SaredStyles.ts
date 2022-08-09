@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
-export const title = styled.h2`
-    
+export const Title = styled.h2`
+    margin-top: 60px;
+    font-size: 30px;
+    color: blue;
 `
 
 export const Form = styled.form`
@@ -21,7 +23,8 @@ export const Input = styled.input`
   width: 100%;
   color: #000;
   background: #FFFFFF;
-  padding: 20px;
+  padding: 15px;
+  margin: 5px;
   border: 1px solid rgba(120, 177, 89, 0.25);
   border-radius: 12px;
   box-shadow: 0px 4px 24px rgba(120, 177, 89, 0.12);
@@ -39,7 +42,7 @@ export const Button = styled.button`
 
   width: 100%;
   margin-top: 30px;
-  font-family: 'Inter';
+  font-family: 'Lexend Deca', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -48,9 +51,17 @@ export const Button = styled.button`
   color: #FFFFFF;
   text-align: center;
   padding: 10px;
-  background: #135713;
+  background: blue;
   border-radius: 12px;
   width: 207px;
   height: 60px;
 
+`
+
+export const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 80vh;
 `
