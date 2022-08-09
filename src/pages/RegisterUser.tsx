@@ -1,11 +1,12 @@
 import { useState } from "react"
-import { Spin } from "react-cssfx-loading"
 import { useNavigate } from "react-router-dom"
 import { ToastContainer } from "react-toastify"
 import styled from "styled-components"
 import api from "../api/ApiConections"
+import Header from "../components/Header"
+import Loading from "../components/Loading"
 
-import { Button, Container, Form, Input, Label, Title } from "../components/SaredStyles"
+import { Button, Form, Input, Label, Title } from "../components/SaredStyles"
 import { erroMessage, sucessMessage } from "../utils/toasts"
 
 export type userBody = {
@@ -85,79 +86,82 @@ export default function Register(){
         }
     }
     return(
-        <RegisterBody>
-            <ToastContainer/>
-            {(loading===false) ? 
-            <>
-                <Title>Cadastro de Usuário</Title>
-                <Form onSubmit={handleSubmit}>
-                <Label>CPF</Label>
-                    <Input
-                        placeholder="Ex: 999.999.999-99"
-                        type="text"
-                        onKeyDown={handleKeyDown}
-                        onChange={(e) => normalizeCPFnumber(e.target.value)}
-                        name="cpf"
-                        value={formData.cpf}
-                        required
-                    />
-                    <Label>NOME</Label>
-                    <Input
-                        placeholder="Nome completo"
-                        type="nome"
-                        onChange={(e) => handleChange(e)}
-                        name="name"
-                        value={formData.name}
-                        required
-                    />
-                    <Label>DATA DE NACIMENTO</Label>
-                    <Input
-                        type="date"
-                        onChange={(e) => handleChange(e)}
-                        name="birthDate"
-                        value={formData.birthDate}
-                        required
-                    />
-                    <Label>TELEFONE</Label>
-                    <Input
-                        placeholder="Ex: 77988885555"
-                        type="number"
-                        onChange={(e) => handleChange(e)}
-                        name="phone"
-                        value={formData.phone}
-                        required
-                    />
-                    <Label>EMAIL</Label>
-                    <Input
-                        placeholder="Email"
-                        type="email"
-                        onChange={(e) => handleChange(e)}
-                        name="email"
-                        value={formData.email}
-                        required
-                    />
-                    <Label>SENHA</Label>
-                    <Input
-                        placeholder="No mínimo 8 dígitos"
-                        type="password"
-                        onChange={(e) => handleChange(e)}
-                        name="password"
-                        value={formData.password}
-                        required
-                    />
-                    <Label>REPITA A SENHA</Label>
-                    <Input
-                        placeholder="Repita a senha"
-                        type="password"
-                        onChange={(e) => handleChange(e)}
-                        name="repeatPassword"
-                        value={formData.repeatPassword}
-                        required
-                    />
-                    <Button>Cadastrar</Button>
-                </Form>
-            </> : <Container><Spin color="#5d51a0" width="150px" height="150px"/></Container>} 
-        </RegisterBody>
+        <>
+            <Header/>
+            <RegisterBody>
+                <ToastContainer/>
+                {(loading===false) ? 
+                <>
+                    <Title>Cadastro de Usuário</Title>
+                    <Form onSubmit={handleSubmit}>
+                    <Label>CPF</Label>
+                        <Input
+                            placeholder="Ex: 999.999.999-99"
+                            type="text"
+                            onKeyDown={handleKeyDown}
+                            onChange={(e) => normalizeCPFnumber(e.target.value)}
+                            name="cpf"
+                            value={formData.cpf}
+                            required
+                        />
+                        <Label>NOME</Label>
+                        <Input
+                            placeholder="Nome completo"
+                            type="nome"
+                            onChange={(e) => handleChange(e)}
+                            name="name"
+                            value={formData.name}
+                            required
+                        />
+                        <Label>DATA DE NACIMENTO</Label>
+                        <Input
+                            type="date"
+                            onChange={(e) => handleChange(e)}
+                            name="birthDate"
+                            value={formData.birthDate}
+                            required
+                        />
+                        <Label>TELEFONE</Label>
+                        <Input
+                            placeholder="Ex: 77988885555"
+                            type="number"
+                            onChange={(e) => handleChange(e)}
+                            name="phone"
+                            value={formData.phone}
+                            required
+                        />
+                        <Label>EMAIL</Label>
+                        <Input
+                            placeholder="Email"
+                            type="email"
+                            onChange={(e) => handleChange(e)}
+                            name="email"
+                            value={formData.email}
+                            required
+                        />
+                        <Label>SENHA</Label>
+                        <Input
+                            placeholder="No mínimo 8 dígitos"
+                            type="password"
+                            onChange={(e) => handleChange(e)}
+                            name="password"
+                            value={formData.password}
+                            required
+                        />
+                        <Label>REPITA A SENHA</Label>
+                        <Input
+                            placeholder="Repita a senha"
+                            type="password"
+                            onChange={(e) => handleChange(e)}
+                            name="repeatPassword"
+                            value={formData.repeatPassword}
+                            required
+                        />
+                        <Button>Cadastrar</Button>
+                    </Form>
+                </> : <Loading/>} 
+            </RegisterBody>
+        </>
     )
 }
 

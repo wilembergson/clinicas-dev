@@ -1,9 +1,10 @@
-import styled from "styled-components";
+import styled from "styled-components"
+import { colors } from "../utils/Colors"
 
 export const Title = styled.h2`
     margin-top: 60px;
     font-size: 30px;
-    color: #6470df;
+    color: ${colors.primary};
     font-family: 'Oxygen', sans-serif;
 `
 
@@ -23,7 +24,7 @@ export const Label = styled.label`
   font-weight: 400;
   font-size: 18px;
   line-height: 15px;
-  color: #6470df;
+  color: ${colors.primary};
   margin-top: 8px;
   margin-left: 5px;
 `
@@ -64,16 +65,8 @@ export const Button = styled.button`
   color: #FFFFFF;
   text-align: center;
   padding: 10px;
-  background: #6470df;
+  background: ${colors.primary};
   border-radius: 8px;
   width: 100%;
   height: 60px;
-`
-
-export const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 80vh;
 `

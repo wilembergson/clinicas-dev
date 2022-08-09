@@ -12,7 +12,6 @@ export default function App() {
     return (
       <UserContext.Provider value={{token, setToken}}>
         <AppBody>
-            <Header/>
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Register/>}/>
@@ -30,9 +29,4 @@ const AppBody = styled.main`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-`
-const Header = styled.header`
-    width: 100%;
-    height: 80px;
-    background: linear-gradient(90deg, #6470df 35%, rgba(149,180,186,1) 100%);
 `

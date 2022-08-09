@@ -1,10 +1,11 @@
-import { useContext, useState } from "react"
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { ToastContainer } from "react-toastify"
 import styled from "styled-components"
 import api from "../api/ApiConections"
+import Header from "../components/Header"
+import Loading from "../components/Loading"
 import { Button, Form, Input, Label, Title } from "../components/SaredStyles"
-import UserContext from "../contexts/UserContext"
 import { erroMessage } from "../utils/toasts"
 
 export type LoginBody = {
@@ -13,8 +14,8 @@ export type LoginBody = {
 }
 
 export default function Login(){
-    const {setToken} = useContext(UserContext)
     const navigate = useNavigate()
+    const [loading, setLoading] = useState(false)
     const initialData:LoginBody = {
         email:'',
         password:''
@@ -27,47 +28,53 @@ export default function Login(){
 
     async function handleSubmit(e:any){
         e.preventDefault()
+        setLoading(true)
         const login = {...formData}
         try{
             const {data} = await api.login(login)
-            setToken(data)
             localStorage.setItem("token", data.token)
             navigate("/home")
         }catch(error:any){
-            const errorMessage:string = error.response.data.error
+            setLoading(false)
             erroMessage(error.response.data.error)
         }
     }
     return(
-        <LoginBody>
+        <>
+            <Header/>
+            <LoginForm>
             <ToastContainer/>
-            <Title>Login</Title>
-            <Form onSubmit={handleSubmit}>
-            <Label>EMAIL</Label>
-                    <Input
-                        placeholder="Email"
-                        type="email"
-                        onChange={(e) => handleChange(e)}
-                        name="email"
-                        value={formData.email}
-                        required
-                    />
-                    <Label>SENHA</Label>
-                    <Input
-                        placeholder="No mínimo 8 dígitos"
-                        type="password"
-                        onChange={(e) => handleChange(e)}
-                        name="password"
-                        value={formData.password}
-                        required
-                    />
-                    <Button>Entrar</Button>
-            </Form>
-        </LoginBody>
+            {!loading ? 
+                <>
+                   <Title>Login</Title>
+                    <Form onSubmit={handleSubmit}>
+                    <Label>EMAIL</Label>
+                            <Input
+                                placeholder="Email"
+                                type="email"
+                                onChange={(e) => handleChange(e)}
+                                name="email"
+                                value={formData.email}
+                                required
+                            />
+                            <Label>SENHA</Label>
+                            <Input
+                                placeholder="No mínimo 8 dígitos"
+                                type="password"
+                                onChange={(e) => handleChange(e)}
+                                name="password"
+                                value={formData.password}
+                                required
+                            />
+                            <Button>Entrar</Button>
+                    </Form> 
+                </> : <Loading/>}   
+            </LoginForm>
+        </>
     )
 }
 
-const LoginBody = styled.section`
+const LoginForm = styled.section`
     display: flex;
     width: 400px;
     justify-content: center;
