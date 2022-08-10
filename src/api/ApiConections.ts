@@ -13,8 +13,16 @@ async function login(data:LoginBody){
     return await axios.post(`${BASE_URL}/login`, data)
 }
 
+function getUserName(token:string){
+    return axios.get(`${BASE_URL}/get-user-name`, {
+        headers:{
+            authorization:`Bearer ${token}`
+        }
+    })
+}
 const api = {
     createUser,
-    login
+    login,
+    getUserName
 }
 export default api

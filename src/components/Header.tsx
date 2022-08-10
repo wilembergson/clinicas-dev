@@ -1,13 +1,31 @@
+import { useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
+import UserContext from "../contexts/UserContext"
 
 export default function Header(){
     const navigate = useNavigate()
+    const {userName} = useContext(UserContext)
+
+    function checkLogin(){
+        if(localStorage.getItem("token")){
+            navigate("/home")
+        }else{
+            navigate("/login")
+        }
+    }
     return(
         <HeaderBody>
             <ContainerButtons>
-                <Button onClick={()=>navigate('/login')}>Login</Button>
-                <Button onClick={()=>navigate('/')}>Cadastre-se</Button>
+                {userName ? 
+                    <Button>{userName}</Button> 
+                :
+                    <>
+                        <Button onClick={()=>checkLogin()}>Login</Button>
+                        <Button onClick={()=>navigate('/')}>Cadastre-se</Button>    
+                    </>
+                }
+  
             </ContainerButtons>
         </HeaderBody>
     )

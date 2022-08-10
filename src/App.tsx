@@ -7,10 +7,10 @@ import Login from "./pages/Login"
 import Register from "./pages/RegisterUser"
 
 export default function App() {
-    const [token, setToken] = useState('')
+    const [userName, setUserName] = useState('')
     
     return (
-      <UserContext.Provider value={{token, setToken}}>
+      <UserContext.Provider value={{userName, setUserName}}>
         <AppBody>
             <BrowserRouter>
                 <Routes>
