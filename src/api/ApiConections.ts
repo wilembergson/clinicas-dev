@@ -1,4 +1,5 @@
 import axios from "axios";
+import { LoginBody } from "../pages/Login";
 
 import { userBody } from "../pages/RegisterUser";
 import BASE_URL from "./BaseURL"
@@ -8,7 +9,20 @@ async function createUser(user:userBody){
     return result
 }
 
+async function login(data:LoginBody){
+    return await axios.post(`${BASE_URL}/login`, data)
+}
+
+function getUserName(token:string){
+    return axios.get(`${BASE_URL}/get-user-name`, {
+        headers:{
+            authorization:`Bearer ${token}`
+        }
+    })
+}
 const api = {
-    createUser
+    createUser,
+    login,
+    getUserName
 }
 export default api
