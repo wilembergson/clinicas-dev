@@ -20,9 +20,19 @@ function getUserName(token:string){
         }
     })
 }
+
+function getAddress(token:string){
+    return axios.get(`${BASE_URL}/address`, {
+        headers:{
+            authorization:`Bearer ${token}`
+        }
+    })
+}
+
 const api = {
     createUser,
     login,
-    getUserName
+    getUserName,
+    getAddress
 }
 export default api

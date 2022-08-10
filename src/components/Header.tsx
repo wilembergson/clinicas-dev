@@ -5,7 +5,7 @@ import UserContext from "../contexts/UserContext"
 
 export default function Header(){
     const navigate = useNavigate()
-    const {userName} = useContext(UserContext)
+    const {userName, setUserName} = useContext(UserContext)
 
     function checkLogin(){
         if(localStorage.getItem("token")){
@@ -14,18 +14,27 @@ export default function Header(){
             navigate("/login")
         }
     }
+
+    function logout(){
+        setUserName('')
+        localStorage.clear()
+        navigate("/login")
+    }
+
     return(
         <HeaderBody>
             <ContainerButtons>
                 {userName ? 
-                    <Button>{userName}</Button> 
+                    <>
+                        <Button>{userName}</Button>
+                        <Button onClick={() => logout()}>Sair</Button> 
+                    </>
                 :
                     <>
                         <Button onClick={()=>checkLogin()}>Login</Button>
                         <Button onClick={()=>navigate('/')}>Cadastre-se</Button>    
                     </>
                 }
-  
             </ContainerButtons>
         </HeaderBody>
     )
@@ -35,6 +44,9 @@ const HeaderBody = styled.header`
     width: 100%;
     height: 80px;
     background: linear-gradient(90deg, #6470df 35%, rgba(149,180,186,1) 100%);
+    @media (max-width:399px){
+        width: 399px;
+    }
 `
 const Button = styled.button`
     color: #fff;

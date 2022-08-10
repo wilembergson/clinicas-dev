@@ -26,7 +26,6 @@ export default function App() {
 
 const AppBody = styled.main`
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
 `
