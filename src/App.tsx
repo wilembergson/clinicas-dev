@@ -4,6 +4,7 @@ import styled from "styled-components"
 import UserContext from "./contexts/UserContext"
 import Home from "./pages/Home"
 import Login from "./pages/Login"
+import RegisterAddress from "./pages/RegisterAddress"
 import Register from "./pages/RegisterUser"
 
 export default function App() {
@@ -17,6 +18,7 @@ export default function App() {
                     <Route path="/" element={<Register/>}/>
                     <Route path="/login" element={<Login/>}/>
                     <Route path="/home" element={<Home/>}/>
+                    <Route path="/address/register" element={<RegisterAddress/>}/>
                 </Routes>
             </BrowserRouter>
         </AppBody>

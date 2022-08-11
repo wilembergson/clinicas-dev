@@ -47,10 +47,15 @@ export const Input = styled.input`
   border: 1px solid rgba(120, 177, 89, 0.25);
   border-radius: 7px;
   box-shadow: 0px 4px 24px rgba(120, 177, 89, 0.12);
+  transition: 0.7s ease;
   ::placeholder {
     color: #9C9C9C;
     font-family: 'Lexend Deca', sans-serif;
   }
+  :hover{
+        box-shadow: 0px 2px 12px  ${colors.primary};
+        transition: 0.7s ease;
+    }
   @media (max-width:399px){
         width: 80%;
     }
@@ -77,11 +82,23 @@ export const Button = styled.button`
   height: 60px;
   transition: 0.7s ease;
   :hover{
-        color: #fff;
-        background: rgb(135, 129, 214);
+        color: ${colors.primary};
+        background: ${colors.secondary};
         transition: 0.7s ease;
     }
     @media (max-width:399px){
         width: 80%;
+    }
+`
+
+export const RegisterBody = styled.section`
+    display: flex;
+    width: 500px;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    @media (max-width:490px){
+        width: 90%;
+        align-items: center;
     }
 `

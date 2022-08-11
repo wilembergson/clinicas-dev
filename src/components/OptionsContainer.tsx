@@ -1,10 +1,27 @@
+import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
+import api from "../api/ApiConections"
 import { colors } from "../utils/Colors"
 
-export default function OptionsContainer(){
+export default function OptionsContainer(props:any){
+    const {token} = props
+    const navigate = useNavigate()
+    const [address, setAddress] = useState(null)
+
+    useEffect(() => {
+        const promise = api.getAddress(token)
+        promise.then(response => setAddress(response.data))
+        .catch(error => console.log(error))
+    },[])
+
     return(
         <Options>
-            <ItemRegister>Cadastrar endereço</ItemRegister>
+            {!address ? 
+                <ItemRegister onClick={()=> navigate('/address/register')}>Cadastrar endereço</ItemRegister>
+                :<ItemRegister>Para implementar</ItemRegister>
+            }
+            
         </Options>
     )
 }
@@ -30,7 +47,7 @@ const ItemRegister = styled.section`
     cursor: pointer;
     color: ${colors.primary};
     padding: 0 12px;
-    background: #FFF;
+    background: #fefefe;
 
     font-size: 20px;
     font-weight: 800;
@@ -38,7 +55,7 @@ const ItemRegister = styled.section`
     transition: 0.7s ease;
     :hover{
         color: #fff;
-        background: rgb(143, 174, 189);
+        background: ${colors.secondary};
         transition: 0.7s ease;
     }
     @media (max-width:399px){

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import styled from "styled-components"
 import api from "../api/ApiConections"
+import { colors } from "../utils/Colors"
 
 export default function HomeBanner(props:any){
     const { userName, token } = props
@@ -28,7 +29,7 @@ const Banner = styled.div`
     display: flex;
     flex-direction: column;
     width: 600px;
-    background: linear-gradient(90deg, #6470df 35%, rgba(149,180,186,1) 100%);
+    background: linear-gradient(90deg, ${colors.primary} 35%, rgba(149,180,186,1) 100%);
     padding: 25px;
     margin-top: 25px;
     border-radius: 10px;
