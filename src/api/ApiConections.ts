@@ -4,6 +4,13 @@ import { LoginBody } from "../pages/Login";
 import { userBody } from "../pages/RegisterUser";
 import BASE_URL from "./BaseURL"
 
+export type AddressBody = {
+    number:string
+    street:string
+    district:string
+    city:string
+    uf:string
+  }
 async function createUser(user:userBody){
     const result = await axios.post(`${BASE_URL}/user`, user)
     return result
@@ -29,10 +36,22 @@ function getAddress(token:string){
     })
 }
 
+function newAddress(data:AddressBody, token:string){
+    return axios.post(`${BASE_URL}/address`, 
+        data,
+        {
+            headers:{
+                authorization:`Bearer ${token}`
+            }
+        }
+    )
+}
+
 const api = {
     createUser,
     login,
     getUserName,
-    getAddress
+    getAddress,
+    newAddress
 }
 export default api

@@ -2,18 +2,13 @@ import { useState } from "react";
 import Select from "react-select"
 import { useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import styled from "styled-components";
+
 import Header from "../components/Header";
 import Loading from "../components/Loading";
 import { Form, Input, Label, RegisterBody, Title } from "../components/SaredStyles";
-import styled from "styled-components";
-
-type AddressBody = {
-    number: string;
-    street: string;
-    district: string;
-    city: string;
-    uf: string;
-}
+import { erroMessage, sucessMessage } from "../utils/toasts";
+import api, { AddressBody } from "../api/ApiConections";
 
 const Ufs = [
     { value: 'AC', label: 'AC' },
@@ -61,6 +56,24 @@ export default function RegisterAddress(){
         setFormData({ ...formData, [target.name]: target.value })
     }
     
+    async function handleSubmit(e:any){
+        e.preventDefault()
+        setLoading(true)
+        const newAddress = {...formData}
+        const token = localStorage.getItem("token")
+        if(token){
+            const promise = api.newAddress(newAddress, token)
+            promise.then(response =>{
+                sucessMessage(response.data)
+                navigate("/home")
+            })
+            .catch(error => {
+                setLoading(false)
+                erroMessage(error.response.data.error)
+            })
+        }
+    }
+
     return(
         <>
             <Header/>
@@ -69,7 +82,7 @@ export default function RegisterAddress(){
             {!loading ? 
                 <>
                    <Title>Cadastro de endereço</Title>
-                    <Form>
+                    <Form onSubmit={handleSubmit}>
                     <Label>Número</Label>
                             <Input
                                 placeholder="Número da sua residência"
