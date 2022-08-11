@@ -2,6 +2,7 @@ import { useContext } from "react"
 import styled from "styled-components"
 import Header from "../components/Header"
 import HomeBanner from "../components/HomeBanner"
+import HomePrincialContent from "../components/HomePrincipalContent"
 import OptionsContainer from "../components/OptionsContainer"
 import UserContext from "../contexts/UserContext"
 
@@ -15,6 +16,7 @@ export default function Home(){
             <HomeBody>
                 <HomeBanner userName={userName} token={token}/>
                 <OptionsContainer token={token}/>
+                <HomePrincialContent/>
             </HomeBody>
         </>
         

@@ -29,7 +29,8 @@ const Banner = styled.div`
     display: flex;
     flex-direction: column;
     width: 600px;
-    background: linear-gradient(90deg, ${colors.primary} 35%, rgba(149,180,186,1) 100%);
+    background: linear-gradient(90deg, #e16d80 35%, ${colors.tertiary} 100%);
+    box-shadow: 0px 4px 24px rgba(25, 26, 25, 0.12);
     padding: 25px;
     margin-top: 25px;
     border-radius: 10px;

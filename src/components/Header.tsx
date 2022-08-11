@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import api from "../api/ApiConections"
 import UserContext from "../contexts/UserContext"
+import { colors } from "../utils/Colors"
 import { erroMessage } from "../utils/toasts"
 
 export default function Header(){
@@ -54,7 +55,7 @@ export default function Header(){
 const HeaderBody = styled.header`
     width: 100%;
     height: 80px;
-    background: #232338;
+    background: ${colors.primary};
     @media (max-width:399px){
         width: 399px;
     }
@@ -70,8 +71,8 @@ const Button = styled.button`
     font-size: 18px;
     transition: 0.7s ease;
     :hover{
-        color: #232338;
-        background: #ff013d;
+        color: ${colors.primary};
+        background: ${colors.tertiary};
         transition: 0.7s ease;
     }
     @media (max-width:399px){
