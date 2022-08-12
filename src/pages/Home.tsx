@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import styled from "styled-components"
 import Header from "../components/Header"
 import HomeBanner from "../components/HomeBanner"
@@ -7,15 +7,15 @@ import OptionsContainer from "../components/OptionsContainer"
 import UserContext from "../contexts/UserContext"
 
 export default function Home(){
-    const token:any = localStorage.getItem("token")
+    
     const { userName } = useContext(UserContext)
 
     return(
         <>
             <Header/>
             <HomeBody>
-                <HomeBanner userName={userName} token={token}/>
-                <OptionsContainer token={token}/>
+                <HomeBanner userName={userName}/>
+                <OptionsContainer/>
                 <HomePrincialContent/>
             </HomeBody>
         </>

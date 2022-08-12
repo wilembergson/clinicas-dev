@@ -13,7 +13,7 @@ export default function Header(){
 
     const token:any = localStorage.getItem("token")
     useEffect(() => {
-        const promise = api.getUserName(token)
+        const promise = api.getUserName()
         promise.then(response =>{
             setUserName(response.data)
         }).catch(error=> erroMessage(error.response.data))

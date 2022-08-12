@@ -8,7 +8,7 @@ export default function HomeBanner(props:any){
     const [address, setAddress] = useState(null)
 
     useEffect(() => {
-        const promise = api.getAddress(token)
+        const promise = api.getAddress()
         promise.then(response => setAddress(response.data))
         .catch(error => console.log(error))
     },[])

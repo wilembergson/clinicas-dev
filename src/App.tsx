@@ -9,9 +9,11 @@ import Register from "./pages/RegisterUser"
 
 export default function App() {
     const [userName, setUserName] = useState('')
+    const [principalContentTitle, setPrincipalContentTitle] = useState('Início')
+    const contextValues = {userName, setUserName, principalContentTitle, setPrincipalContentTitle}
     
     return (
-      <UserContext.Provider value={{userName, setUserName}}>
+      <UserContext.Provider value={contextValues}>
         <AppBody>
             <BrowserRouter>
                 <Routes>

@@ -60,18 +60,16 @@ export default function RegisterAddress(){
         e.preventDefault()
         setLoading(true)
         const newAddress = {...formData}
-        const token = localStorage.getItem("token")
-        if(token){
-            const promise = api.newAddress(newAddress, token)
-            promise.then(response =>{
-                sucessMessage(response.data)
-                navigate("/home")
-            })
-            .catch(error => {
-                setLoading(false)
-                erroMessage(error.response.data.error)
-            })
-        }
+        
+        const promise = api.newAddress(newAddress)
+        promise.then(response =>{
+            sucessMessage(response.data)
+            navigate("/home")
+        })
+        .catch(error => {
+            setLoading(false)
+            erroMessage(error.response.data.error)
+        })
     }
 
     return(

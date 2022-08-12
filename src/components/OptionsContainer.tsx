@@ -1,16 +1,17 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import api from "../api/ApiConections"
+import UserContext from "../contexts/UserContext"
 import { colors } from "../utils/Colors"
 
-export default function OptionsContainer(props:any){
-    const {token} = props
+export default function OptionsContainer(){
     const navigate = useNavigate()
     const [address, setAddress] = useState(null)
+    const {setPrincipalContentTitle} = useContext(UserContext)
 
     useEffect(() => {
-        const promise = api.getAddress(token)
+        const promise = api.getAddress()
         promise.then(response => setAddress(response.data))
         .catch(error => console.log(error))
     },[])
@@ -20,9 +21,9 @@ export default function OptionsContainer(props:any){
             {!address ? 
                 <ItemRegister onClick={()=> navigate('/address/register')}>Cadastrar endereço</ItemRegister>
                 :<>
-                    <ItemHome>Nova consulta</ItemHome>
-                    <ItemHome>???</ItemHome>
-                    <ItemHome>???</ItemHome>
+                    <ItemHome onClick={()=> setPrincipalContentTitle('Nova consulta')}>Nova consulta</ItemHome>
+                    <ItemHome onClick={()=> setPrincipalContentTitle('???')}>???</ItemHome>
+                    <ItemHome onClick={()=> setPrincipalContentTitle('Implementar...')}>implementar...</ItemHome>
                 </>
             }
             

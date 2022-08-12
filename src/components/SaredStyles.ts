@@ -102,3 +102,66 @@ export const RegisterBody = styled.section`
         align-items: center;
     }
 `
+export const ButtonsContainer = styled.div`
+    display: flex;
+    margin-top: 30px;
+    @media (max-width:399px){
+          width: 80%;
+      }
+`
+export const Confirm = styled.button`
+    box-sizing: border-box;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    margin-left: 5px;
+    font-family: 'Oxygen', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 15px;
+    color: #FFFFFF;
+    background: #539e4c;
+    text-align: center;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    height: 50px;
+    transition: 0.7s ease;
+    :hover{
+          background:#68b861;
+          transition: 0.7s ease;
+      }
+      @media (max-width:399px){
+          width: 100%;
+      }
+`
+export const Cancel = styled.button`
+    box-sizing: border-box;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    margin-left: 5px;
+    font-family: 'Oxygen', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 15px;
+    color: #FFFFFF;
+    background: #f7433d;
+    text-align: center;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    height: 50px;
+    transition: 0.7s ease;
+    :hover{
+          background:#e05d59;
+          transition: 0.7s ease;
+      }
+      @media (max-width:399px){
+          width: 100%;
+      }
+`
