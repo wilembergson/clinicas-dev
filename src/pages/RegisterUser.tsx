@@ -1,12 +1,11 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { ToastContainer } from "react-toastify"
-import styled from "styled-components"
+
 import api from "../api/ApiConections"
 import Header from "../components/Header"
 import Loading from "../components/Loading"
-
-import { Button, Form, Input, Label, Title } from "../components/SaredStyles"
+import { Button, Form, Input, Label, RegisterBody, Title } from "../components/SaredStyles"
 import { erroMessage, sucessMessage } from "../utils/toasts"
 
 export type userBody = {
@@ -165,14 +164,3 @@ export default function Register(){
     )
 }
 
-const RegisterBody = styled.section`
-    display: flex;
-    width: 500px;
-    justify-content: center;
-    flex-direction: column;
-    position: relative;
-    @media (max-width:490px){
-        width: 90%;
-        align-items: center;
-    }
-`

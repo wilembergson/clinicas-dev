@@ -4,19 +4,23 @@ import styled from "styled-components"
 import UserContext from "./contexts/UserContext"
 import Home from "./pages/Home"
 import Login from "./pages/Login"
+import RegisterAddress from "./pages/RegisterAddress"
 import Register from "./pages/RegisterUser"
 
 export default function App() {
     const [userName, setUserName] = useState('')
+    const [principalContentTitle, setPrincipalContentTitle] = useState('Início')
+    const contextValues = {userName, setUserName, principalContentTitle, setPrincipalContentTitle}
     
     return (
-      <UserContext.Provider value={{userName, setUserName}}>
+      <UserContext.Provider value={contextValues}>
         <AppBody>
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Register/>}/>
                     <Route path="/login" element={<Login/>}/>
                     <Route path="/home" element={<Home/>}/>
+                    <Route path="/address/register" element={<RegisterAddress/>}/>
                 </Routes>
             </BrowserRouter>
         </AppBody>

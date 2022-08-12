@@ -1,11 +1,23 @@
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
+import api from "../api/ApiConections"
 import UserContext from "../contexts/UserContext"
+import { colors } from "../utils/Colors"
+import { erroMessage } from "../utils/toasts"
 
 export default function Header(){
     const navigate = useNavigate()
     const {userName, setUserName} = useContext(UserContext)
+    const [logged, setLogged] = useState(false)
+
+    const token:any = localStorage.getItem("token")
+    useEffect(() => {
+        const promise = api.getUserName()
+        promise.then(response =>{
+            setUserName(response.data)
+        }).catch(error=> erroMessage(error.response.data))
+    },[])
 
     function checkLogin(){
         if(localStorage.getItem("token")){
@@ -26,7 +38,7 @@ export default function Header(){
             <ContainerButtons>
                 {userName ? 
                     <>
-                        <Button>{userName}</Button>
+                        <Button onClick={()=>navigate('/home')}>{userName}</Button>
                         <Button onClick={() => logout()}>Sair</Button> 
                     </>
                 :
@@ -43,7 +55,7 @@ export default function Header(){
 const HeaderBody = styled.header`
     width: 100%;
     height: 80px;
-    background: linear-gradient(90deg, #6470df 35%, rgba(149,180,186,1) 100%);
+    background: ${colors.primary};
     @media (max-width:399px){
         width: 399px;
     }
@@ -59,8 +71,8 @@ const Button = styled.button`
     font-size: 18px;
     transition: 0.7s ease;
     :hover{
-        color: #fff;
-        background: rgb(37, 133, 189);
+        color: ${colors.primary};
+        background: ${colors.tertiary};
         transition: 0.7s ease;
     }
     @media (max-width:399px){

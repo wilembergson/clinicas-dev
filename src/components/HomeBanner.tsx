@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react"
 import styled from "styled-components"
 import api from "../api/ApiConections"
+import { colors } from "../utils/Colors"
 
 export default function HomeBanner(props:any){
     const { userName, token } = props
     const [address, setAddress] = useState(null)
 
     useEffect(() => {
-        const promise = api.getAddress(token)
+        const promise = api.getAddress()
         promise.then(response => setAddress(response.data))
         .catch(error => console.log(error))
     },[])
@@ -28,7 +29,8 @@ const Banner = styled.div`
     display: flex;
     flex-direction: column;
     width: 600px;
-    background: linear-gradient(90deg, #6470df 35%, rgba(149,180,186,1) 100%);
+    background: linear-gradient(90deg, #e16d80 35%, ${colors.tertiary} 100%);
+    box-shadow: 0px 4px 24px rgba(25, 26, 25, 0.12);
     padding: 25px;
     margin-top: 25px;
     border-radius: 10px;
