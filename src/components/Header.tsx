@@ -23,14 +23,14 @@ export default function Header(){
         if(localStorage.getItem("token")){
             navigate("/home")
         }else{
-            navigate("/login")
+            navigate("/")
         }
     }
 
     function logout(){
         setUserName('')
         localStorage.clear()
-        navigate("/login")
+        navigate("/")
     }
 
     return(
@@ -44,7 +44,7 @@ export default function Header(){
                 :
                     <>
                         <Button onClick={()=>checkLogin()}>Login</Button>
-                        <Button onClick={()=>navigate('/')}>Cadastre-se</Button>    
+                        <Button onClick={()=>navigate('/register')}>Cadastre-se</Button>    
                     </>
                 }
             </ContainerButtons>

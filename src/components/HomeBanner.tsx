@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import styled from "styled-components"
 import api from "../api/ApiConections"
+import UserContext from "../contexts/UserContext"
 import { colors } from "../utils/Colors"
 
 export default function HomeBanner(props:any){
-    const { userName } = props
+    const { userName } = useContext(UserContext)
     const [address, setAddress] = useState(null)
 
     useEffect(() => {
