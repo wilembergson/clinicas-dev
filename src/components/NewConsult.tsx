@@ -7,7 +7,6 @@ import UserContext from "../contexts/UserContext"
 import { erroMessage, sucessMessage } from "../utils/toasts"
 import api from "../api/ApiConections"
 import { ToastContainer } from "react-toastify"
-import Loading from "./Loading"
 
 type SpecialtyItem = {
     id:number,
@@ -25,6 +24,7 @@ export default function NewConsult(){
     const [specialtyList, setSpecialtylList] = useState<SelectItem[]>([])
     const [specialtyName, setSpecialtyName] = useState<string | undefined>('')
     const [date, setDate] = useState('')
+    const [ days, setDays] = useState([])
 
     function toMountSpetialtiesList(list:SpecialtyItem[]){
         const mountList:any = []
@@ -52,7 +52,10 @@ export default function NewConsult(){
     useEffect(() => {
         const promise =  api.listSpecialties()
         promise.then(response => toMountSpetialtiesList(response.data))
-    },[])
+        const promise2 =  api.getAvailableDays(specialtyName)
+        promise2.then(response => setDays(response.data))
+        .catch(error => {console.log(error)})
+    },[specialtyName])
 
     return(
         <ConsultBody>
@@ -76,6 +79,7 @@ export default function NewConsult(){
                     name="Date"
                     required
                 />
+                <LabelDays>Dias disponívéis: {days.join(', ')}</LabelDays>
                 <ButtonsContainer>
                     <Confirm type="submit" disabled={loading}>Salvar</Confirm>
                     <Cancel type="button" disabled={loading} onClick={()=> setPrincipalContentTitle('início')}>Cancelar</Cancel>
@@ -90,4 +94,18 @@ const ConsultBody = styled.section`
     align-items: center;
     flex-direction: column;
     width: 90%;
+`
+
+const LabelDays = styled.label`
+    font-family: 'Oxygen', sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 15px;
+    color: grey;
+    margin-top: 8px;
+    margin-left: 5px;
+    @media (max-width:399px){
+          width: 80%;
+      }
 `
