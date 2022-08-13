@@ -77,7 +77,7 @@ export default function Register(){
             const { data } = await api.createUser(user)
             console.log(data)
             sucessMessage(data.message)
-            setTimeout(()=> navigation('/login'), 3000)
+            setTimeout(()=> navigation('/'), 3000)
         }catch(error:any){
             setLoading(false)
             const errorMessage:string = error.response.data.error

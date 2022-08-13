@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { ToastContainer } from "react-toastify"
 import styled from "styled-components"
@@ -34,11 +34,19 @@ export default function Login(){
             const {data} = await api.login(login)
             localStorage.setItem("token", data.token)
             navigate("/home")
+            window.location.reload()
         }catch(error:any){
             setLoading(false)
             erroMessage(error.response.data.error)
         }
     }
+
+    useEffect(()=>{
+        if(localStorage.getItem("token")){
+            navigate("/home")
+        }
+    },[])
+
     return(
         <>
             <Header/>
