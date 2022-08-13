@@ -36,7 +36,7 @@ export default function Header(){
     return(
         <HeaderBody>
             <ContainerButtons>
-                {userName ? 
+                {token ? 
                     <>
                         <Button onClick={()=>navigate('/home')}>{userName}</Button>
                         <Button onClick={() => logout()}>Sair</Button> 

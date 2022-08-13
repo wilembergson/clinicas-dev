@@ -73,6 +73,10 @@ function newConsult(data:ConsultType){
     )
 }
 
+function getAvailableDays(specialtyName:string | undefined){
+    return axios.get(`${BASE_URL}/specialty-days/${specialtyName}`)
+}
+
 const api = {
     createUser,
     login,
@@ -80,6 +84,7 @@ const api = {
     getAddress,
     newAddress,
     listSpecialties,
-    newConsult
+    newConsult,
+    getAvailableDays
 }
 export default api

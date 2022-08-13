@@ -4,7 +4,7 @@ import api from "../api/ApiConections"
 import { colors } from "../utils/Colors"
 
 export default function HomeBanner(props:any){
-    const { userName, token } = props
+    const { userName } = props
     const [address, setAddress] = useState(null)
 
     useEffect(() => {
