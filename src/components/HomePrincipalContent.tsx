@@ -26,6 +26,7 @@ const PrincialContent = styled.div`
     border-radius: 10px;
     overflow: hidden;
     width: 650px;
+    
     @media (max-width:399px){
         width: auto;
     }

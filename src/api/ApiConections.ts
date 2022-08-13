@@ -11,11 +11,16 @@ export type AddressBody = {
     city:string
     uf:string
 }
+
+export type ConsultType = {
+    specialtyName:string | undefined
+    date:string
+}
+
 const token:any = localStorage.getItem("token")
 
 async function createUser(user:userBody){
-    const result = await axios.post(`${BASE_URL}/user`, user)
-    return result
+    return await axios.post(`${BASE_URL}/user`, user)
 }
 
 async function login(data:LoginBody){
@@ -57,12 +62,24 @@ function listSpecialties(){
     })
 }
 
+function newConsult(data:ConsultType){
+    return axios.post(`${BASE_URL}/consult`, 
+        data,
+        {
+            headers:{
+                authorization:`Bearer ${token}`
+            }
+        }
+    )
+}
+
 const api = {
     createUser,
     login,
     getUserName,
     getAddress,
     newAddress,
-    listSpecialties
+    listSpecialties,
+    newConsult
 }
 export default api
