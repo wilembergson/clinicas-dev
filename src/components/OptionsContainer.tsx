@@ -26,14 +26,14 @@ export default function OptionsContainer(){
         <Options>
             {!address ? 
                 <ItemRegister onClick={()=> navigate('/address/register')}>Cadastrar endereço</ItemRegister>
-                :<>
+            :
+                <>
                     <ItemHome onClick={()=> setPrincipalContentTitle(titles.nextConsult)}>{titles.nextConsult}</ItemHome>
                     <ItemHome onClick={()=> setPrincipalContentTitle(titles.newConsult)}>{titles.newConsult}</ItemHome>
                     <ItemHome onClick={()=> setPrincipalContentTitle(titles.historic)}>{titles.historic}</ItemHome>
 
                 </>
-            }
-            
+            } 
         </Options>
     )
 }

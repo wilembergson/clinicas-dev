@@ -1,11 +1,19 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import styled from "styled-components"
+import api from "../api/ApiConections"
 import Header from "../components/Header"
 import HomeBanner from "../components/HomeBanner"
 import HomePrincialContent from "../components/HomePrincipalContent"
 import OptionsContainer from "../components/OptionsContainer"
 
 export default function Home(){
+    const [address, setAddress] = useState(null)
+
+    useEffect(() => {
+        const promise = api.getAddress()
+        promise.then(response => setAddress(response.data))
+        .catch(error => console.log(error.response.data.error))
+    },[])
 
     return(
         <>
@@ -13,7 +21,7 @@ export default function Home(){
             <HomeBody>
                 <HomeBanner/>
                 <OptionsContainer/>
-                <HomePrincialContent/>
+                {address ? <HomePrincialContent/> : <></>}
             </HomeBody>
         </>
         

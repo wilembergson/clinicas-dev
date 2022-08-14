@@ -40,7 +40,7 @@ export default function NewConsult(){
         promise.then(response => {
             sucessMessage(response.data.message)
             setTimeout(()=> {
-                setPrincipalContentTitle('início')
+                setPrincipalContentTitle(titles.nextConsult)
             }, 3000)
             
         })
