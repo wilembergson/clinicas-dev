@@ -7,9 +7,9 @@ import Login from "./pages/Login"
 import RegisterAddress from "./pages/RegisterAddress"
 import Register from "./pages/RegisterUser"
 
-export default function App() {
+export default function App(){
     const [userName, setUserName] = useState('')
-    const [principalContentTitle, setPrincipalContentTitle] = useState('Início')
+    const [principalContentTitle, setPrincipalContentTitle] = useState('Próxima consulta')
     const contextValues = {userName, setUserName, principalContentTitle, setPrincipalContentTitle}
     
     return (

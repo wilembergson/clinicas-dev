@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import api from "../api/ApiConections"
@@ -9,14 +9,12 @@ import { erroMessage } from "../utils/toasts"
 export default function Header(){
     const navigate = useNavigate()
     const {userName, setUserName} = useContext(UserContext)
-    const [logged, setLogged] = useState(false)
 
     const token:any = localStorage.getItem("token")
     useEffect(() => {
         const promise = api.getUserName()
-        promise.then(response =>{
-            setUserName(response.data)
-        }).catch(error=> erroMessage(error.response.data))
+        promise.then(response => setUserName(response.data))
+        .catch(error=> erroMessage(error.response.data))
     },[])
 
     function checkLogin(){

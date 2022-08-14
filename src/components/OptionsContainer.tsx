@@ -5,6 +5,12 @@ import api from "../api/ApiConections"
 import UserContext from "../contexts/UserContext"
 import { colors } from "../utils/Colors"
 
+export const titles = {
+    nextConsult: 'Próximas consultas',
+    newConsult: 'Nova consulta',
+    historic: 'Histórico'
+}
+
 export default function OptionsContainer(){
     const navigate = useNavigate()
     const [address, setAddress] = useState(null)
@@ -21,9 +27,10 @@ export default function OptionsContainer(){
             {!address ? 
                 <ItemRegister onClick={()=> navigate('/address/register')}>Cadastrar endereço</ItemRegister>
                 :<>
-                    <ItemHome onClick={()=> setPrincipalContentTitle('Nova consulta')}>Nova consulta</ItemHome>
-                    <ItemHome onClick={()=> setPrincipalContentTitle('???')}>???</ItemHome>
-                    <ItemHome onClick={()=> setPrincipalContentTitle('Implementar...')}>implementar...</ItemHome>
+                    <ItemHome onClick={()=> setPrincipalContentTitle(titles.nextConsult)}>{titles.nextConsult}</ItemHome>
+                    <ItemHome onClick={()=> setPrincipalContentTitle(titles.newConsult)}>{titles.newConsult}</ItemHome>
+                    <ItemHome onClick={()=> setPrincipalContentTitle(titles.historic)}>{titles.historic}</ItemHome>
+
                 </>
             }
             
@@ -48,7 +55,7 @@ const ItemHome = styled.section`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 190px;
+    width: 192.5px;
     height: 120px;
     cursor: pointer;
     color: ${colors.secondary};

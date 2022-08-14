@@ -3,15 +3,19 @@ import styled from "styled-components"
 import UserContext from "../contexts/UserContext"
 import { colors } from "../utils/Colors"
 import NewConsult from "./NewConsult"
+import { titles } from "./OptionsContainer"
+
+
 
 export default function HomePrincialContent(){
     const { principalContentTitle } = useContext(UserContext)
+
     return(
         <PrincialContent>
             <Title>{principalContentTitle}</Title>
-            {(principalContentTitle==='Nova consulta') ? <NewConsult/> : <></>}
-            {(principalContentTitle==='???') ? <div>???</div> : <></>}
-            {(principalContentTitle==='Implementar...') ? <div>Implementar...</div> : <></>}
+            {(principalContentTitle===titles.nextConsult) ? <div>???</div> : <></>}
+            {(principalContentTitle===titles.newConsult) ? <NewConsult/> : <></>}
+            {(principalContentTitle===titles.historic) ? <div>??????</div> : <></>}
         </PrincialContent>
     )
 }

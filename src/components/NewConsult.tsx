@@ -7,6 +7,7 @@ import UserContext from "../contexts/UserContext"
 import { erroMessage, sucessMessage } from "../utils/toasts"
 import api from "../api/ApiConections"
 import { ToastContainer } from "react-toastify"
+import { titles } from "./OptionsContainer"
 
 type SpecialtyItem = {
     id:number,
@@ -82,7 +83,7 @@ export default function NewConsult(){
                 <LabelDays>Dias disponívéis: {days.join(', ')}</LabelDays>
                 <ButtonsContainer>
                     <Confirm type="submit" disabled={loading}>Salvar</Confirm>
-                    <Cancel type="button" disabled={loading} onClick={()=> setPrincipalContentTitle('início')}>Cancelar</Cancel>
+                    <Cancel type="button" disabled={loading} onClick={()=> setPrincipalContentTitle(titles.nextConsult)}>Cancelar</Cancel>
                 </ButtonsContainer>
             </Form>
         </ConsultBody>
