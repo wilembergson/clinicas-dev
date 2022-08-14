@@ -3,6 +3,7 @@ import styled from "styled-components"
 import UserContext from "../contexts/UserContext"
 import { colors } from "../utils/Colors"
 import NewConsult from "./NewConsult"
+import NextConsult from "./NextConsult"
 import { titles } from "./OptionsContainer"
 
 
@@ -13,7 +14,7 @@ export default function HomePrincialContent(){
     return(
         <PrincialContent>
             <Title>{principalContentTitle}</Title>
-            {(principalContentTitle===titles.nextConsult) ? <div>???</div> : <></>}
+            {(principalContentTitle===titles.nextConsult) ? <NextConsult/> : <></>}
             {(principalContentTitle===titles.newConsult) ? <NewConsult/> : <></>}
             {(principalContentTitle===titles.historic) ? <div>??????</div> : <></>}
         </PrincialContent>

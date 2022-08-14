@@ -97,7 +97,7 @@ const ConsultBody = styled.section`
     width: 90%;
 `
 
-const LabelDays = styled.label`
+export const LabelDays = styled.label`
     font-family: 'Oxygen', sans-serif;
     font-style: italic;
     font-weight: 400;
