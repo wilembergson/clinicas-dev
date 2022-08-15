@@ -87,6 +87,16 @@ function nextConsult(){
     )
 }
 
+function historic(){
+    return axios.get(`${BASE_URL}/historic`,
+        {
+            headers:{
+                authorization:`Bearer ${token}`
+            }
+        }
+    )
+}
+
 const api = {
     createUser,
     login,
@@ -96,6 +106,7 @@ const api = {
     listSpecialties,
     newConsult,
     getAvailableDays,
-    nextConsult
+    nextConsult,
+    historic
 }
 export default api

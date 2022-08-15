@@ -6,7 +6,7 @@ import UserContext from "../contexts/UserContext"
 import { colors } from "../utils/Colors"
 
 export const titles = {
-    nextConsult: 'Próximas consultas',
+    nextConsult: 'Próxima consulta',
     newConsult: 'Nova consulta',
     historic: 'Histórico'
 }

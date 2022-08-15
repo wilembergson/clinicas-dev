@@ -165,3 +165,10 @@ export const Cancel = styled.button`
           width: 100%;
       }
 `
+export const NoConsults = styled.label`
+    font-family: 'Oxygen', sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    margin: 85px;
+    color: #c7c5c5;
+`

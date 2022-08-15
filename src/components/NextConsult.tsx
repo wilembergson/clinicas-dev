@@ -3,6 +3,7 @@ import styled from "styled-components"
 import api from "../api/ApiConections"
 import { colors } from "../utils/Colors"
 import { LabelDays } from "./NewConsult"
+import { NoConsults } from "./SaredStyles"
 
 export default function NextConsult(){
     const [specialty, setSpecialty] = useState('')
@@ -21,9 +22,15 @@ export default function NextConsult(){
     
     return(
         <ConsultBody>
-            <Label>{specialty}</Label>
-            <Label>{date}</Label>
-            <LabelDays>Em caso de cancelamento, basta não comparecer no dia da consulta.</LabelDays>
+            {date ? 
+                <>
+                    <Label>{specialty}</Label>
+                    <Label>{date}</Label>
+                    <LabelDays>Em caso de cancelamento, basta não comparecer no dia da consulta.</LabelDays>
+                </>
+            :
+                <NoConsults>Não há consultas marcadas</NoConsults>    
+            }
         </ConsultBody>
     )
 }

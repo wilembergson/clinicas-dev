@@ -2,6 +2,7 @@ import { useContext } from "react"
 import styled from "styled-components"
 import UserContext from "../contexts/UserContext"
 import { colors } from "../utils/Colors"
+import Historic from "./Historic"
 import NewConsult from "./NewConsult"
 import NextConsult from "./NextConsult"
 import { titles } from "./OptionsContainer"
@@ -16,7 +17,7 @@ export default function HomePrincialContent(){
             <Title>{principalContentTitle}</Title>
             {(principalContentTitle===titles.nextConsult) ? <NextConsult/> : <></>}
             {(principalContentTitle===titles.newConsult) ? <NewConsult/> : <></>}
-            {(principalContentTitle===titles.historic) ? <div>??????</div> : <></>}
+            {(principalContentTitle===titles.historic) ? <Historic/> : <></>}
         </PrincialContent>
     )
 }
@@ -27,7 +28,7 @@ const PrincialContent = styled.div`
     flex-direction: column;
     background: #fff;
     box-shadow: 0px 4px 24px rgba(25, 26, 25, 0.12);
-    margin: 20px 0;
+    margin: 20px 0 40px 0;
     border-radius: 10px;
     overflow: hidden;
     width: 650px;
