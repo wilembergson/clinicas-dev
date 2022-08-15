@@ -77,6 +77,26 @@ function getAvailableDays(specialtyName:string | undefined){
     return axios.get(`${BASE_URL}/specialty-days/${specialtyName}`)
 }
 
+function nextConsult(){
+    return axios.get(`${BASE_URL}/next-consults`,
+        {
+            headers:{
+                authorization:`Bearer ${token}`
+            }
+        }
+    )
+}
+
+function historic(){
+    return axios.get(`${BASE_URL}/historic`,
+        {
+            headers:{
+                authorization:`Bearer ${token}`
+            }
+        }
+    )
+}
+
 const api = {
     createUser,
     login,
@@ -85,6 +105,8 @@ const api = {
     newAddress,
     listSpecialties,
     newConsult,
-    getAvailableDays
+    getAvailableDays,
+    nextConsult,
+    historic
 }
 export default api
