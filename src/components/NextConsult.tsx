@@ -12,17 +12,18 @@ export default function NextConsult(){
     useEffect(() => {
         const promise = api.nextConsult()
         promise.then(response => {
-            const d = new Date(response.data.date)
-            const m = d.getMonth()+1
-            const month = (m<10) ? `0${m}` : `${m}`
-            setDate(`${d.getDate()}/${month}/${d.getFullYear()}`)
-            setSpecialty(response.data.specialty.name)
+            if(response.data.date!==undefined){
+                const d = new Date(response.data.date)
+                const m = d.getMonth()+1
+                const month = (m<10) ? `0${m}` : `${m}`
+                setDate(`${d.getDate()}/${month}/${d.getFullYear()}`)
+                setSpecialty(response.data.specialty.name)
+            }
         })
     },[])
-    
     return(
         <ConsultBody>
-            {date ? 
+            {date!=='' ? 
                 <>
                     <Label>{specialty}</Label>
                     <Label>{date}</Label>
