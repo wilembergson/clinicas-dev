@@ -44,6 +44,7 @@ const ConsultBody = styled.section`
     width: 100%;
     padding: 15px;
 `
+
 const Label = styled.label`
     font-family: 'Oxygen', sans-serif;
     font-weight: 800;
