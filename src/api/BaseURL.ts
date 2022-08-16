@@ -1,2 +1,2 @@
-const BASE_URL= 'http://localhost:5000'
+const BASE_URL= 'https://clinicas-dev.herokuapp.com'
 export default BASE_URL
