@@ -4,6 +4,9 @@ import styled from "styled-components"
 import api from "../api/ApiConections"
 import UserContext from "../contexts/UserContext"
 import { colors } from "../utils/Colors"
+import { BsCalendar3 } from 'react-icons/bs'
+import { BsCalendarPlus } from 'react-icons/bs'
+import { RiHistoryFill } from 'react-icons/ri'
 
 export const titles = {
     nextConsult: 'Próxima consulta',
@@ -28,9 +31,18 @@ export default function OptionsContainer(){
                 <ItemRegister onClick={()=> navigate('/address/register')}>Cadastrar endereço</ItemRegister>
             :
                 <>
-                    <ItemHome onClick={()=> setPrincipalContentTitle(titles.nextConsult)}>{titles.nextConsult}</ItemHome>
-                    <ItemHome onClick={()=> setPrincipalContentTitle(titles.newConsult)}>{titles.newConsult}</ItemHome>
-                    <ItemHome onClick={()=> setPrincipalContentTitle(titles.historic)}>{titles.historic}</ItemHome>
+                    <ItemHome onClick={()=> setPrincipalContentTitle(titles.nextConsult)}>
+                        <BsCalendar3 size={'35px'}/>
+                        {titles.nextConsult}
+                    </ItemHome>
+                    <ItemHome onClick={()=> setPrincipalContentTitle(titles.newConsult)}>
+                        <BsCalendarPlus size={'35px'}/>
+                        {titles.newConsult}
+                    </ItemHome>
+                    <ItemHome onClick={()=> setPrincipalContentTitle(titles.historic)}>
+                        <RiHistoryFill size={'35px'}/>
+                        {titles.historic}
+                    </ItemHome>
 
                 </>
             } 
