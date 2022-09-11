@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import Select from "react-select"
 
-import { ButtonsContainer, Cancel, Confirm, Form, Input, Label } from "./SaredStyles"
+import { ButtonsContainer, Cancel, Confirm, FieldLabel, Form } from "./SaredStyles"
 import { useContext, useEffect, useState } from "react"
 import UserContext from "../contexts/UserContext"
 import { erroMessage, sucessMessage } from "../utils/toasts"
@@ -62,7 +62,7 @@ export default function NewConsult(){
         <ConsultBody>
             <ToastContainer/>
             <Form onSubmit={handleSubmit}>
-                <Label>ESPECIALIDADE</Label>
+                <FieldLabel>ESPECIALIDADE</FieldLabel>
                 <Select
                     isDisabled={loading}
                     options={specialtyList}
@@ -72,8 +72,8 @@ export default function NewConsult(){
                         }
                     }
                 />
-                <Label>DATA</Label>
-                <Input
+                <FieldLabel>DATA</FieldLabel>
+                <DateInput
                     disabled={loading}
                     type="date"
                     onChange={(e) => setDate(e.target.value)}
@@ -109,4 +109,26 @@ export const LabelDays = styled.label`
     @media (max-width:399px){
           width: 80%;
       }
+`
+const DateInput = styled.input`
+  all: unset;
+  box-sizing: border-box;
+  font-family: 'Lexend Deca', sans-serif;
+  width: 100%;
+  color: grey;
+  padding: 15px;
+  margin: 5px;
+  border: 1px solid grey;
+  border-radius: 7px;
+  transition: 0.7s ease;
+  ::placeholder {
+    color: gray;
+    font-family: 'Lexend Deca', sans-serif;
+  }
+  :hover{
+        transition: 0.7s ease;
+    }
+  @media (max-width:399px){
+        width: 80%;
+    }
 `

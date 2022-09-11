@@ -4,7 +4,7 @@ import { colors } from "../utils/Colors"
 export const Title = styled.h2`
     margin-top: 60px;
     font-size: 30px;
-    color: ${colors.primary};
+    color: ${colors.clearColor};
     font-family: 'Oxygen', sans-serif;
 `
 
@@ -27,7 +27,21 @@ export const Label = styled.label`
   font-weight: 400;
   font-size: 18px;
   line-height: 15px;
-  color: ${colors.primary};
+  color: ${colors.clearColor};
+  margin-top: 8px;
+  margin-left: 5px;
+  @media (max-width:399px){
+        width: 80%;
+    }
+`
+
+export const FieldLabel = styled.label`
+  font-family: 'Oxygen', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 15px;
+  color: ${colors.secondary};
   margin-top: 8px;
   margin-left: 5px;
   @media (max-width:399px){
@@ -40,16 +54,16 @@ export const Input = styled.input`
   box-sizing: border-box;
   font-family: 'Lexend Deca', sans-serif;
   width: 100%;
-  color: #000;
-  background: #FFFFFF;
+  color: #FFF;
+  background: rgba(255, 255, 255, 0.05);
   padding: 15px;
   margin: 5px;
-  border: 1px solid rgba(120, 177, 89, 0.25);
+  border: 1px solid #FFF;
   border-radius: 7px;
   box-shadow: 0px 4px 24px rgba(120, 177, 89, 0.12);
   transition: 0.7s ease;
   ::placeholder {
-    color: #9C9C9C;
+    color: #FFF;
     font-family: 'Lexend Deca', sans-serif;
   }
   :hover{
@@ -66,7 +80,8 @@ export const Button = styled.button`
   box-sizing: border-box;
   cursor: pointer;
   width: 100%;
-  margin-top: 40px;
+  margin-top: 60px;
+  margin-bottom: 40px;
   margin-left: 10px;
   font-family: 'Oxygen', sans-serif;
   font-style: normal;
@@ -76,14 +91,17 @@ export const Button = styled.button`
   color: #FFFFFF;
   text-align: center;
   padding: 10px;
-  background: ${colors.primary};
-  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8.4px);
+  -webkit-backdrop-filter: blur(8.4px);
+  border: 1px solid rgba(255, 255, 255, 0.26);
   width: 100%;
   height: 60px;
   transition: 0.7s ease;
   :hover{
-        color: ${colors.primary};
-        background: ${colors.secondary};
+        background: rgba(255, 255, 255, 0.2);
         transition: 0.7s ease;
     }
     @media (max-width:399px){
@@ -93,11 +111,15 @@ export const Button = styled.button`
 
 export const RegisterBody = styled.section`
     display: flex;
-    width: 500px;
+    width: 550px;
     justify-content: center;
     flex-direction: column;
-    position: relative;
-    margin-top: 80px;
+    padding: 0 30px 0 20px;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #e16d80 35%, ${colors.tertiary} 100%);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     @media (max-width:490px){
         width: 90%;
         align-items: center;

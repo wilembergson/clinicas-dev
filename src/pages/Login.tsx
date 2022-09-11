@@ -6,6 +6,7 @@ import api from "../api/ApiConections"
 import Header from "../components/Header"
 import Loading from "../components/Loading"
 import { Button, Form, Input, Label, Title } from "../components/SaredStyles"
+import { colors } from "../utils/Colors"
 import { erroMessage } from "../utils/toasts"
 
 export type LoginBody = {
@@ -89,7 +90,12 @@ const LoginForm = styled.section`
     justify-content: center;
     flex-direction: column;
     position: relative;
-    margin-top: 80px;
+    margin-top: 180px;
+    padding: 0 30px 0 20px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #e16d80 35%, ${colors.tertiary} 100%);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+
     @media (max-width:399px){
         align-items: center;
     }

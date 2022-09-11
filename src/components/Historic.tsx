@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import styled from "styled-components"
 import api from "../api/ApiConections"
-import { Label, NoConsults } from "./SaredStyles"
+import { colors } from "../utils/Colors"
+import { FieldLabel, Label, NoConsults } from "./SaredStyles"
 
 export default function Historic(){
     const [historic, setHistoric] = useState<any[]>([])
@@ -31,8 +32,8 @@ export default function Historic(){
             {(historic.length !==0) ? 
                 <>
                     {historic.map(item => <Item>
-                        <Label>{item.date}</Label>
-                        <Label>{item.specialty}</Label>
+                        <FieldLabel>{item.date}</FieldLabel>
+                        <FieldLabel>{item.specialty}</FieldLabel>
                     </Item>)}
                 </>
             :   
@@ -46,10 +47,11 @@ export default function Historic(){
 const Item = styled.section`
     display: flex;
     justify-content: space-around;
-
+    border: 1px solid ${colors.secondary};
     width: 90%;
     margin: 10px;
     padding: 10px;
+    padding-bottom: 15px;
     box-shadow: 0px 2px 12px rgba(120, 177, 89, 0.12);
     border-radius: 8px;
 `
