@@ -53,13 +53,16 @@ export default function Header(){
 const HeaderBody = styled.header`
     width: 100%;
     height: 80px;
-    background: ${colors.primary};
+    background: ${colors.clearColor};
+    opacity: 0.9;
+    position: fixed;
+    backdrop-filter: blur(10px);
     @media (max-width:399px){
         width: 399px;
     }
 `
 const Button = styled.button`
-    color: #fff;
+    color: ${colors.secondary};
     background: none;
     border: none;
     cursor: pointer;
@@ -69,8 +72,8 @@ const Button = styled.button`
     font-size: 18px;
     transition: 0.7s ease;
     :hover{
-        color: ${colors.primary};
-        background: ${colors.tertiary};
+        color: ${colors.clearColor};
+        background: ${colors.secondary};
         transition: 0.7s ease;
     }
     @media (max-width:399px){

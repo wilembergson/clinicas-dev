@@ -97,6 +97,7 @@ export const RegisterBody = styled.section`
     justify-content: center;
     flex-direction: column;
     position: relative;
+    margin-top: 80px;
     @media (max-width:490px){
         width: 90%;
         align-items: center;

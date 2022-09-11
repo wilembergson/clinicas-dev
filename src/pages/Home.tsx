@@ -34,4 +34,5 @@ const HomeBody = styled.div`
     flex-direction: column;
     width: 100%;
     background: #f1f1f1;
+    margin-top: 80px;
 `
