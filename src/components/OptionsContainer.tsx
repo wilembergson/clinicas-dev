@@ -7,6 +7,7 @@ import { colors } from "../utils/Colors"
 import { BsCalendar3 } from 'react-icons/bs'
 import { BsCalendarPlus } from 'react-icons/bs'
 import { RiHistoryFill } from 'react-icons/ri'
+import { MdOutlineMapsHomeWork } from 'react-icons/md'
 
 export const titles = {
     nextConsult: 'Próxima consulta',
@@ -28,7 +29,10 @@ export default function OptionsContainer(){
     return(
         <Options>
             {!address ? 
-                <ItemRegister onClick={()=> navigate('/address/register')}>Cadastrar endereço</ItemRegister>
+                <ItemRegister onClick={()=> navigate('/address/register')}>
+                    <MdOutlineMapsHomeWork size={'50px'}/>
+                    Cadastrar endereço
+                </ItemRegister>
             :
                 <>
                     <ItemHome onClick={()=> setPrincipalContentTitle(titles.nextConsult)}>
@@ -93,14 +97,14 @@ const ItemRegister = styled.section`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 190px;
+    width: 620px;
     height: 110px;
     cursor: pointer;
     color: ${colors.secondary};
     padding: 0 12px;
     background: ${colors.clearColor};
 
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 800;
 
     transition: 0.7s ease;

@@ -51,10 +51,9 @@ export default function Login(){
     return(
         <>
             <Header/>
-            <LoginForm>
                 <ToastContainer/>
                 {!loading ? 
-                    <>
+                    <LoginForm>
                        <Title>Login</Title>
                         <Form onSubmit={handleSubmit}>
                         <Label>EMAIL</Label>
@@ -77,9 +76,8 @@ export default function Login(){
                                 />
                                 <Button>Entrar</Button>
                         </Form> 
-                    </> : <Loading/>
+                    </LoginForm> : <Loading/>
                 }   
-            </LoginForm>
         </>
     )
 }

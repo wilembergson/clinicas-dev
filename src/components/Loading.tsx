@@ -5,7 +5,7 @@ import { colors } from "../utils/Colors"
 export default function Loading(){
     return(
         <Container>
-            <TwinSpin color={colors.primary} width="150px" height="150px"/>
+            <TwinSpin color={colors.secondary} width="150px" height="150px"/>
         </Container>
     )
 }

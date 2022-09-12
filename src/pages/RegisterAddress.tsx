@@ -75,10 +75,9 @@ export default function RegisterAddress(){
     return(
         <>
             <Header/>
-            <RegisterBody>
             <ToastContainer/>
             {!loading ? 
-                <>
+                <RegisterBody>
                    <Title>Cadastro de endereço</Title>
                     <Form onSubmit={handleSubmit}>
                     <Label>Número</Label>
@@ -130,8 +129,7 @@ export default function RegisterAddress(){
                                 <Cancel onClick={()=> navigate('/home')}>Cancelar</Cancel>
                             </ButtonsContainer>
                     </Form> 
-                </> : <Loading/>}   
-            </RegisterBody>
+                </RegisterBody> : <Loading/>}   
         </>
     )
 }

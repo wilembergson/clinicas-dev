@@ -87,10 +87,9 @@ export default function Register(){
     return(
         <>
             <Header/>
-            <RegisterBody>
-                <ToastContainer/>
-                {(loading===false) ? 
-                <>
+            <ToastContainer/>
+            {(loading===false) ? 
+                <RegisterBody>
                     <Title>Cadastro de Usuário</Title>
                     <Form onSubmit={handleSubmit}>
                     <Label>CPF</Label>
@@ -158,8 +157,8 @@ export default function Register(){
                         />
                         <Button>Cadastrar</Button>
                     </Form>
-                </> : <Loading/>} 
-            </RegisterBody>
+                </RegisterBody> : <Loading/>
+            }
         </>
     )
 }
