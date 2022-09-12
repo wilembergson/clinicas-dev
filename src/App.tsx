@@ -7,6 +7,7 @@ import Home from "./pages/Home"
 import Login from "./pages/Login"
 import RegisterAddress from "./pages/RegisterAddress"
 import Register from "./pages/RegisterUser"
+import BgImage from "./assets/background.jpg"
 
 export default function App(){
     const [userName, setUserName] = useState('')
@@ -33,4 +34,8 @@ const AppBody = styled.main`
     display: flex;
     align-items: center;
     flex-direction: column;
+`
+const BackImage = styled.img`
+    position: fixed;
+    z-index: 0;
 `

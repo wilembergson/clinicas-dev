@@ -91,8 +91,9 @@ const LoginForm = styled.section`
     margin-top: 180px;
     padding: 0 30px 0 20px;
     border-radius: 10px;
+    //background: rgba(255, 255, 255, 0.2);
     background: linear-gradient(90deg, #e16d80 35%, ${colors.tertiary} 100%);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
 
     @media (max-width:399px){
         align-items: center;

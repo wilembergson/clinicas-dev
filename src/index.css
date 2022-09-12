@@ -1,6 +1,7 @@
 body {
   margin: 0;
-  background: #f0f0f0;
+  background: #e9a3a3;
+  background-image: url("./assets/background.jpg");
   font-family: 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;

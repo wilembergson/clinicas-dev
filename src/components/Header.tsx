@@ -5,6 +5,7 @@ import api from "../api/ApiConections"
 import UserContext from "../contexts/UserContext"
 import { colors } from "../utils/Colors"
 import { erroMessage } from "../utils/toasts"
+import Logo from "../assets/logo-small.png"
 
 export default function Header(){
     const navigate = useNavigate()
@@ -33,6 +34,7 @@ export default function Header(){
 
     return(
         <HeaderBody>
+            <LogoImg src={Logo}/>
             <ContainerButtons>
                 {token ? 
                     <>
@@ -50,12 +52,19 @@ export default function Header(){
     )
 }
 
+const LogoImg = styled.img`
+    width: 270px;
+    height: 70px;
+    margin-top: 5px;
+`
 const HeaderBody = styled.header`
+    display: flex;
     width: 100%;
     height: 80px;
     position: fixed;
     z-index: 1;
-    background: rgba(225, 109, 128, 0.2);
+    background: rgba(255, 255, 255, 0.2);
+    //background: rgba(225, 109, 128, 0.2);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(8.4px);
     -webkit-backdrop-filter: blur(8.4px);
