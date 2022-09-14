@@ -118,8 +118,9 @@ export const RegisterBody = styled.section`
     margin-top: 100px;
     margin-bottom: 50px;
     border-radius: 10px;
-    background: linear-gradient(90deg, #e16d80 35%, ${colors.tertiary} 100%);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    //background: linear-gradient(90deg, #e16d80 35%, ${colors.tertiary} 100%);
+    background: ${colors.secondary};
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
     @media (max-width:490px){
         width: 90%;
         align-items: center;

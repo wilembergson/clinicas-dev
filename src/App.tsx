@@ -7,7 +7,7 @@ import Home from "./pages/Home"
 import Login from "./pages/Login"
 import RegisterAddress from "./pages/RegisterAddress"
 import Register from "./pages/RegisterUser"
-import BgImage from "./assets/background.jpg"
+import InitialPage from "./pages/InitialPage"
 
 export default function App(){
     const [userName, setUserName] = useState('')
@@ -19,7 +19,8 @@ export default function App(){
         <AppBody>
             <BrowserRouter>
                 <Routes>
-                <Route path="/" element={<Login/>}/>
+                    <Route path="/" element={<InitialPage/>}/>
+                    <Route path="/login" element={<Login/>}/>
                     <Route path="/register" element={<Register/>}/>
                     <Route path="/home" element={<Home/>}/>
                     <Route path="/address/register" element={<RegisterAddress/>}/>

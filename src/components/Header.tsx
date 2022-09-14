@@ -22,7 +22,7 @@ export default function Header(){
         if(localStorage.getItem("token")){
             navigate("/home")
         }else{
-            navigate("/")
+            navigate("/login")
         }
     }
 
@@ -34,7 +34,7 @@ export default function Header(){
 
     return(
         <HeaderBody>
-            <LogoImg src={Logo}/>
+            <LogoImg src={Logo} onClick={()=>navigate('/')}/>
             <ContainerButtons>
                 {token ? 
                     <>
@@ -56,6 +56,7 @@ const LogoImg = styled.img`
     width: 270px;
     height: 70px;
     margin-top: 5px;
+    cursor: pointer;
 `
 const HeaderBody = styled.header`
     display: flex;
@@ -64,7 +65,6 @@ const HeaderBody = styled.header`
     position: fixed;
     z-index: 1;
     background: rgba(255, 255, 255, 0.2);
-    //background: rgba(225, 109, 128, 0.2);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(8.4px);
     -webkit-backdrop-filter: blur(8.4px);

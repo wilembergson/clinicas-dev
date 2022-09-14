@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import styled from "styled-components"
 import api from "../api/ApiConections"
 import Header from "../components/Header"
