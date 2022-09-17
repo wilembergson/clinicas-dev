@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 
-import ImgBaner from "../assets/initialBaner.jpg"
 import Logo  from "../assets/logo-small.png"
 import { colors } from "../utils/Colors"
 
@@ -46,19 +45,24 @@ const BannerImage = styled.img`
 const BannerButton = styled.button`
     width: 200px;
     height: 70px;
-    color: #FFF;
-    background: ${colors.primary};
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    border: none;
+    border: 3px solid ${colors.secondary};
     border-radius: 40px;
     font-size: 20px;
+    font-weight: 800;
     transition: 0.7s ease;
+    color: #FFF;
+    background: ${colors.secondary};
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     :hover{
-        background: ${colors.secondary};
+        color: ${colors.secondary};
+        background: rgba(255, 255, 255, 0.2);
+        border: 3px solid ${colors.secondary};
         transition: 0.7s ease;
-        transform: translateY(-10px);
-        transform: scale(1.1);
+        transform: scale(1.2);
     }
 `
 const BannerTitle = styled.label`
@@ -71,7 +75,7 @@ const BannerTitle = styled.label`
 const ButtonsContainer = styled.section`
     display: flex;
     justify-content: space-around;
-    width: 100%;
+    width: 50%;
     z-index: 2;
     margin-top: -35px;
 `

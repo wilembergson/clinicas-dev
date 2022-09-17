@@ -6,6 +6,7 @@ import UserContext from "../contexts/UserContext"
 import { colors } from "../utils/Colors"
 import { erroMessage } from "../utils/toasts"
 import Logo from "../assets/logo-small.png"
+import {MdKeyboardArrowDown} from "react-icons/md"
 
 export default function Header(){
     const navigate = useNavigate()
@@ -34,11 +35,20 @@ export default function Header(){
 
     return(
         <HeaderBody>
-            <LogoImg src={Logo} onClick={()=>navigate('/')}/>
+            <LogoImg src={Logo} onClick={()=> token ? navigate('/home') : navigate('/')}/>
             <ContainerButtons>
                 {token ? 
                     <>
-                        <Button onClick={()=>navigate('/home')}>{userName}</Button>
+                        <Dropdown>
+                            <ButtonDropdown>
+                                {userName}                                
+                                <MdKeyboardArrowDown size={'20px'}/>
+                            </ButtonDropdown>
+                            <ContentDropdown>
+                                <ItemDropdown >Informações</ItemDropdown>
+                                <ItemDropdown onClick={()=>navigate('/address/register')}>Endereço</ItemDropdown>
+                            </ContentDropdown>
+                        </Dropdown>
                         <Button onClick={() => logout()}>Sair</Button> 
                     </>
                 :
@@ -52,6 +62,26 @@ export default function Header(){
     )
 }
 
+const ItemDropdown = styled.button`
+    color: ${colors.secondary};
+    background: none;
+    border: none;
+    cursor: pointer;
+    height: 80px;
+    padding: 3px;
+    font-family: 'Oxygen', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    transition: 0.7s ease;
+    :hover{
+        color: ${colors.clearColor};
+        background: ${colors.secondary};
+        transition: 0.7s ease;
+    }
+    @media (max-width:399px){
+        padding: 10px;
+    }
+`
 const LogoImg = styled.img`
     width: 270px;
     height: 70px;
@@ -74,6 +104,46 @@ const HeaderBody = styled.header`
     }
 `
 const Button = styled.button`
+    color: ${colors.secondary};
+    background: none;
+    border: none;
+    cursor: pointer;
+    height: 80px;
+    padding: 25px;
+    font-family: 'Oxygen', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    transition: 0.7s ease;
+    :hover{
+        color: ${colors.clearColor};
+        background: ${colors.secondary};
+        transition: 0.7s ease;
+    }
+    @media (max-width:399px){
+        padding: 10px;
+    }
+`
+const ContentDropdown = styled.div`
+    display: none;
+    position: absolute;
+    background: #fff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    :hover{
+        display: block;
+    }
+`
+const Dropdown = styled.div`
+    position: relative;
+    display: inline-block;
+    :hover ${ContentDropdown}{
+        display: flex;
+        flex-direction: column;
+        transition: 0.7s ease;
+    }
+`
+const ButtonDropdown = styled.button`
     color: ${colors.secondary};
     background: none;
     border: none;

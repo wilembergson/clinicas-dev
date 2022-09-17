@@ -90,7 +90,7 @@ export default function Register(){
             <ToastContainer/>
             {(loading===false) ? 
                 <RegisterBody>
-                    <Title>Cadastro de Usuário</Title>
+                    <Title>Cadastre-se</Title>
                     <Form onSubmit={handleSubmit}>
                     <Label>CPF</Label>
                         <Input

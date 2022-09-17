@@ -2,8 +2,11 @@ import styled from "styled-components"
 import { colors } from "../utils/Colors"
 
 export const Title = styled.h2`
+    display: flex;
+    justify-content: center;
+    width: 100%;
     margin-top: 60px;
-    font-size: 30px;
+    font-size: 40px;
     color: ${colors.clearColor};
     font-family: 'Oxygen', sans-serif;
 `

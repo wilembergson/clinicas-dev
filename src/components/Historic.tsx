@@ -54,4 +54,9 @@ const Item = styled.section`
     padding-bottom: 15px;
     box-shadow: 0px 2px 12px rgba(120, 177, 89, 0.12);
     border-radius: 8px;
+    transition: 0.7s ease;
+    :hover{
+        transition: 0.7s ease;
+        transform: scale(1.04);
+    }
 `

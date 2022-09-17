@@ -78,7 +78,7 @@ export default function RegisterAddress(){
             <ToastContainer/>
             {!loading ? 
                 <RegisterBody>
-                   <Title>Cadastro de endereço</Title>
+                   <Title>Endereço</Title>
                     <Form onSubmit={handleSubmit}>
                     <Label>Número</Label>
                             <Input
