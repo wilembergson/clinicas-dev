@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { colors } from "../utils/Colors";
-import { Form, Input, RegisterBody, Title } from "./SaredStyles";
 import { FaEdit } from "react-icons/fa"
 import { useState } from "react";
 import { Address, ButtonsContainer, Cancel, Ufs } from "../pages/RegisterAddress";
@@ -89,6 +88,36 @@ export default function AddressData(props:any){
     )
 }
 
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 40px 20px;
+  @media (max-width:399px){
+        align-items: center;
+    }
+`
+const Input = styled.input`
+  box-sizing: border-box;
+  font-family: 'Lexend Deca', sans-serif;
+  color: ${colors.primary};
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border: 1px solid ${colors.secondary};
+  border-radius: 7px;
+  transition: 0.7s ease;
+  ::placeholder {
+    color: #FFF;
+    font-family: 'Lexend Deca', sans-serif;
+  }
+  :hover{
+        box-shadow: 0px 2px 12px  ${colors.primary};
+        transition: 0.7s ease;
+    }
+  @media (max-width:399px){
+        width: 80%;
+    }
+`
 const AddressInfo = styled.section`
     display: flex;
     align-items: center;
