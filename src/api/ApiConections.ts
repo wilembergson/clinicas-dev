@@ -35,8 +35,8 @@ function getUserName(){
     })
 }
 
-function getAddress(){
-    return axios.get(`${BASE_URL}/address`, {
+async function getAddress(){
+    return await axios.get(`${BASE_URL}/address`, {
         headers:{
             authorization:`Bearer ${token}`
         }

@@ -22,7 +22,7 @@ export default function HomePrincialContent(){
     )
 }
 
-const PrincialContent = styled.div`
+export const PrincialContent = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;

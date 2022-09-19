@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Select from "react-select"
 import { useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
@@ -9,8 +9,9 @@ import Loading from "../components/Loading";
 import { Form, Input, Label, RegisterBody, Title } from "../components/SaredStyles";
 import { erroMessage, sucessMessage } from "../utils/toasts";
 import api, { AddressBody } from "../api/ApiConections";
+import AddressData from "../components/AddressData";
 
-const Ufs = [
+export const Ufs = [
     { value: 'AC', label: 'AC' },
     { value: 'AL', label: 'AL' },
     { value: 'AP', label: 'AP' },
@@ -40,17 +41,27 @@ const Ufs = [
     { value: 'TO', label: 'TO' }
 ]
 
+export type Address = {
+    id?:number
+    number:string
+    street:string
+    district:string
+    city:string
+    uf:string
+}
+
 export default function RegisterAddress(){
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false)
-    const initialData:AddressBody = {
+    const initialData:Address = {
         number:'',
         street:'',
         district:'',
         city:'',
         uf:''
     }
-    const [formData, setFormData] = useState(initialData)
+    const [address, setAddress] = useState<Address|null>(null)
+    const [formData, setFormData] = useState(address ? address : initialData)
 
     function handleChange({ target }:any) {
         setFormData({ ...formData, [target.name]: target.value })
@@ -72,15 +83,25 @@ export default function RegisterAddress(){
         })
     }
 
+    useEffect(() => {
+        const promise = api.getAddress()
+        promise.then(response => {
+            setAddress(response.data)
+        })
+        .catch(error => console.log(error.response.data.error))
+    },[])
+
     return(
         <>
             <Header/>
             <ToastContainer/>
             {!loading ? 
-                <RegisterBody>
-                   <Title>Endereço</Title>
-                    <Form onSubmit={handleSubmit}>
-                    <Label>Número</Label>
+                <>
+                    { address ? <AddressData address={address}/>
+                    : <RegisterBody>
+                        <Title>Endereço</Title>
+                        <Form onSubmit={handleSubmit}>
+                            <Label>Número</Label>
                             <Input
                                 placeholder="Número da sua residência"
                                 type="number"
@@ -128,12 +149,14 @@ export default function RegisterAddress(){
                                 <Confirm>Salvar</Confirm>
                                 <Cancel onClick={()=> navigate('/home')}>Cancelar</Cancel>
                             </ButtonsContainer>
-                    </Form> 
-                </RegisterBody> : <Loading/>}   
+                        </Form> 
+                    </RegisterBody>}
+                </> 
+            : <Loading/>}   
         </>
     )
 }
-const ButtonsContainer = styled.div`
+export const ButtonsContainer = styled.div`
     display: flex;
     margin-top: 30px;
     @media (max-width:399px){
@@ -168,7 +191,7 @@ const Confirm = styled.button`
           width: 100%;
       }
 `
-const Cancel = styled.button`
+export const Cancel = styled.button`
     box-sizing: border-box;
     cursor: pointer;
     width: 100%;
