@@ -24,7 +24,6 @@ Deploy: https://clinicas-dev-frontend.vercel.app
 - Styled-components
 - React-toastify
 - React-Icons
-- react-toastify
 </br></br></br>
 
 ## Backend

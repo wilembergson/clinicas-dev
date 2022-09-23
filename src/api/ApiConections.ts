@@ -12,6 +12,15 @@ export type AddressBody = {
     uf:string
 }
 
+export type UpdateBody = {
+    id:number,
+    number:string
+    street:string
+    district:string
+    city:string
+    uf:string
+}
+
 export type ConsultType = {
     specialtyName:string | undefined
     date:string
@@ -45,6 +54,17 @@ async function getAddress(){
 
 function newAddress(data:AddressBody){
     return axios.post(`${BASE_URL}/address`, 
+        data,
+        {
+            headers:{
+                authorization:`Bearer ${token}`
+            }
+        }
+    )
+}
+
+function updateAddress(data:UpdateBody){
+    return axios.put(`${BASE_URL}/address`, 
         data,
         {
             headers:{
@@ -103,6 +123,7 @@ const api = {
     getUserName,
     getAddress,
     newAddress,
+    updateAddress,
     listSpecialties,
     newConsult,
     getAvailableDays,

@@ -45,7 +45,7 @@ export default function Header(){
                                 <MdKeyboardArrowDown size={'20px'}/>
                             </ButtonDropdown>
                             <ContentDropdown>
-                                {/*<ItemDropdown >Informações</ItemDropdown>*/}
+                                <ItemDropdown onClick={()=>navigate('/home')}>Home</ItemDropdown>
                                 <ItemDropdown onClick={()=>navigate('/address/register')}>Endereço</ItemDropdown>
                             </ContentDropdown>
                         </Dropdown>

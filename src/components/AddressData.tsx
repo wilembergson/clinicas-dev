@@ -4,6 +4,7 @@ import { FaEdit } from "react-icons/fa"
 import { useState } from "react";
 import { Address, ButtonsContainer, Cancel, Ufs } from "../pages/RegisterAddress";
 import Select from "react-select";
+import api from "../api/ApiConections";
 
 export default function AddressData(props:any){
     const { id, number, street, district, city, uf } = props.address
@@ -21,6 +22,22 @@ export default function AddressData(props:any){
         setFormData({ ...formData, [target.name]: target.value })
     }
 
+    function updateAddress(){
+        const promise = api.updateAddress(
+            {
+                id,
+                street: formData.street,
+                number: formData.number.toString(),
+                district: formData.district,
+                city: formData.city,
+                uf: formData.uf
+            }
+        )
+        promise.then(response => {
+            alert(response.data.message)
+        })
+        .catch(error => alert(error.response.data.error))
+    }
     return(
         <AddressBody>
             <AddressTitle>Endereço</AddressTitle>
@@ -71,7 +88,7 @@ export default function AddressData(props:any){
                                 }}
                             />
                             <ButtonsContainer>
-                                <Update>Atualizar</Update>
+                                <Update onClick={() => updateAddress()}>Atualizar</Update>
                                 <Cancel onClick={()=> setEdit(false)}>Cancelar</Cancel>
                             </ButtonsContainer>
                     </Form>
