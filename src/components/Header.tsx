@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import api from "../api/ApiConections"
@@ -7,10 +7,12 @@ import { colors } from "../utils/Colors"
 import { erroMessage } from "../utils/toasts"
 import Logo from "../assets/logo-small.png"
 import {MdKeyboardArrowDown} from "react-icons/md"
+import ModalLogout from "./ModalLogout"
 
 export default function Header(){
     const navigate = useNavigate()
     const {userName, setUserName} = useContext(UserContext)
+    const [showModal, setShowModal] = useState(false)
 
     const token:any = localStorage.getItem("token")
     useEffect(() => {
@@ -25,12 +27,6 @@ export default function Header(){
         }else{
             navigate("/login")
         }
-    }
-
-    function logout(){
-        setUserName('')
-        localStorage.clear()
-        navigate("/")
     }
 
     return(
@@ -49,7 +45,8 @@ export default function Header(){
                                 <ItemDropdown onClick={()=>navigate('/address/register')}>Endereço</ItemDropdown>
                             </ContentDropdown>
                         </Dropdown>
-                        <Button onClick={() => logout()}>Sair</Button> 
+                        <Button onClick={() => setShowModal(true)}>Sair</Button> 
+                        <ModalLogout show={showModal} setShow={setShowModal}/>
                     </>
                 :
                     <>
@@ -93,7 +90,7 @@ const HeaderBody = styled.header`
     width: 100%;
     height: 80px;
     position: fixed;
-    z-index: 1;
+    z-index: 2;
     background: rgba(255, 255, 255, 0.2);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(8.4px);
