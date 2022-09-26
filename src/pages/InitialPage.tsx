@@ -35,7 +35,7 @@ const InitialBanner = styled.div`
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-    @media (max-width:399px){
+    @media (max-width:430px){
         height: 55vh;
     }
 `
@@ -67,7 +67,7 @@ const BannerButton = styled.button`
         transition: 0.7s ease;
         transform: scale(1.2);
     }
-    @media (max-width:399px){
+    @media (max-width:430px){
         width: 150px;
         height: 60px;
         font-size: 17px;
@@ -79,7 +79,7 @@ const BannerTitle = styled.label`
     font-family: 'Oxygen', sans-serif;
     font-size: 80px;
     font-weight: 800;
-    @media (max-width:399px){
+    @media (max-width:430px){
         font-size: 30px;
     }
 `
@@ -89,7 +89,7 @@ const ButtonsContainer = styled.section`
     width: 50%;
     z-index: 2;
     margin-top: -35px;
-    @media (max-width:399px){
+    @media (max-width:430px){
           width: 100%;
       }
 `
