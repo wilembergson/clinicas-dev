@@ -83,12 +83,12 @@ export const Input = styled.input`
 
 export const Button = styled.button`
   all: unset;
-  box-sizing: border-box;
   cursor: pointer;
-  width: 100%;
+  width: 60%;
+  height: 50px;
   margin-top: 60px;
   margin-bottom: 40px;
-  margin-left: 10px;
+  margin-right: 10px;
   font-family: 'Oxygen', sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -103,15 +103,12 @@ export const Button = styled.button`
   backdrop-filter: blur(8.4px);
   -webkit-backdrop-filter: blur(8.4px);
   border: 1px solid rgba(255, 255, 255, 0.26);
-  width: 100%;
-  height: 60px;
   transition: 0.7s ease;
   :hover{
         background: rgba(255, 255, 255, 0.2);
         transition: 0.7s ease;
     }
-    @media (max-width:399px){
-        width: 50%;
+    @media (max-width:430px){
         font-size: 20px;
     }
 `
@@ -211,7 +208,7 @@ export const ModalMessage = styled.label`
     width: 100%;
     font-size: 40px;
     font-weight: 800;
-    @media (max-width:399px) {
+    @media (max-width:430px) {
         font-size: 25px;
     }
 `

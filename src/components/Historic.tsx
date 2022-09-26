@@ -59,7 +59,7 @@ const Item = styled.section`
         transition: 0.7s ease;
         transform: scale(1.04);
     }
-    @media (max-width:399px){
+    @media (max-width:430px){
         width: 85%;
     }
 `

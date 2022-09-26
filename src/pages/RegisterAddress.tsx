@@ -158,10 +158,9 @@ export default function RegisterAddress(){
 }
 export const ButtonsContainer = styled.div`
     display: flex;
+    justify-content: center;
     margin-top: 30px;
-    @media (max-width:399px){
-          width: 80%;
-      }
+    width: 100%;
 `
 const Confirm = styled.button`
     box-sizing: border-box;
@@ -187,7 +186,7 @@ const Confirm = styled.button`
           background:#68b861;
           transition: 0.7s ease;
       }
-      @media (max-width:399px){
+      @media (max-width:430px){
           width: 100%;
       }
 `
@@ -215,7 +214,7 @@ export const Cancel = styled.button`
           background:#e05d59;
           transition: 0.7s ease;
       }
-      @media (max-width:399px){
+      @media (max-width:430px){
           width: 100%;
       }
 `

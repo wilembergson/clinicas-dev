@@ -34,7 +34,7 @@ export const PrincialContent = styled.div`
     width: 650px;
     padding-bottom: 15px;
     
-    @media (max-width:399px){
+    @media (max-width:430px){
         width: 92%;
     }
 `

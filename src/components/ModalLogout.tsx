@@ -49,7 +49,6 @@ const LogoutModal = styled.div<Logout>`
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-   
     height: 100vh;
 `
 const ModalContent = styled.div`
@@ -65,7 +64,7 @@ const ModalContent = styled.div`
     position: absolute;
     padding: 78px 38px 28px 38px;
     overflow: hidden;
-    @media (max-width:399px) {
+    @media (max-width:430px) {
         width: 70%;
         height: 140px;
     }

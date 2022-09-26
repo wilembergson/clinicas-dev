@@ -7,6 +7,7 @@ import Header from "../components/Header"
 import Loading from "../components/Loading"
 import { Button, Form, Input, Label, RegisterBody, Title } from "../components/SaredStyles"
 import { erroMessage, sucessMessage } from "../utils/toasts"
+import { ButtonsContainer } from "./RegisterAddress"
 
 export type userBody = {
     cpf:string,
@@ -155,7 +156,9 @@ export default function Register(){
                             value={formData.repeatPassword}
                             required
                         />
-                        <Button>Cadastrar</Button>
+                        <ButtonsContainer>
+                            <Button>Cadastrar</Button>
+                        </ButtonsContainer>
                     </Form>
                 </RegisterBody> : <Loading/>
             }

@@ -42,7 +42,7 @@ export default function AddressData(props:any){
         <AddressBody>
             <AddressTitle>Endereço</AddressTitle>
             {edit ? 
-                    <Form>
+                <Form>
                     <Label>Número</Label>
                     <Input
                         placeholder="Número da sua residência"
@@ -110,9 +110,8 @@ const Form = styled.form`
   flex-direction: column;
   justify-content: center;
   margin: 40px 20px;
-  @media (max-width:399px){
-        width: 90%;
-        align-items: center;
+  @media (max-width:430px){
+        width: 85%;
         margin: 40px 0px;
     }
 `

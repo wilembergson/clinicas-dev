@@ -62,7 +62,7 @@ const Options = styled.div`
     border-radius: 10px;
     overflow: hidden;
     width: auto;
-    @media (max-width:399px){
+    @media (max-width:430px){
         width: auto;
     }
 `
@@ -85,9 +85,9 @@ const ItemHome = styled.section`
         background: ${colors.secondary};
         transition: 0.7s ease;
     }
-    @media (max-width:399px){
+    @media (max-width:430px){
         font-size: 0;
-        width: 98px;
+        width: 105px;
         height: 90px;
     }
 `
@@ -102,17 +102,15 @@ const ItemRegister = styled.section`
     color: ${colors.secondary};
     padding: 0 12px;
     background: ${colors.clearColor};
-
     font-size: 25px;
     font-weight: 800;
-
     transition: 0.7s ease;
     :hover{
         color: ${colors.clearColor};
         background: ${colors.secondary};
         transition: 0.7s ease;
     }
-    @media (max-width:399px){
+    @media (max-width:430px){
         font-size: medium;
         height: 90px;
     }

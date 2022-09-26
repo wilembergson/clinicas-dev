@@ -8,6 +8,7 @@ import Loading from "../components/Loading"
 import { Button, Form, Input, Label, Title } from "../components/SaredStyles"
 import { colors } from "../utils/Colors"
 import { erroMessage } from "../utils/toasts"
+import { ButtonsContainer } from "./RegisterAddress"
 
 export type LoginBody = {
     email:string,
@@ -74,7 +75,9 @@ export default function Login(){
                             value={formData.password}
                             required
                         />
-                        <Button>Entrar</Button>
+                        <ButtonsContainer>
+                            <Button>Entrar</Button>
+                        </ButtonsContainer>
                     </Form> 
                 </LoginForm> : <Loading/>
             }   
@@ -93,7 +96,7 @@ const LoginForm = styled.section`
     border-radius: 10px;
     background: ${colors.secondary};
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-    @media (max-width:399px){
+    @media (max-width:430px){
         align-items: center;
         width: 93%;
         margin-top: 85px;

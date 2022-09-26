@@ -51,4 +51,7 @@ const Label = styled.label`
     font-size: 42px;
     margin: 15px;
     color: ${colors.secondary};
+    @media (max-width: 430px){
+        font-size: 32px;
+    }
 `

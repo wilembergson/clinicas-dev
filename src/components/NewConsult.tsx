@@ -107,7 +107,8 @@ export const LabelDays = styled.label`
     margin-top: 8px;
     margin-left: 5px;
     @media (max-width:399px){
-          width: 80%;
+        margin-left: 30px;
+        width: 80%;
       }
 `
 const DateInput = styled.input`
