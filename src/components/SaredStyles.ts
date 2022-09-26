@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import Modal from "react-modal"
 import { colors } from "../utils/Colors"
 
 export const Title = styled.h2`
@@ -34,7 +35,8 @@ export const Label = styled.label`
   margin-top: 8px;
   margin-left: 5px;
   @media (max-width:399px){
-        width: 80%;
+        width: 100%;
+        margin-left: 0;
     }
 `
 
@@ -75,6 +77,7 @@ export const Input = styled.input`
     }
   @media (max-width:399px){
         width: 80%;
+        margin:0;
     }
 `
 
@@ -108,7 +111,8 @@ export const Button = styled.button`
         transition: 0.7s ease;
     }
     @media (max-width:399px){
-        width: 80%;
+        width: 50%;
+        font-size: 20px;
     }
 `
 
@@ -121,12 +125,13 @@ export const RegisterBody = styled.section`
     margin-top: 100px;
     margin-bottom: 50px;
     border-radius: 10px;
-    //background: linear-gradient(90deg, #e16d80 35%, ${colors.tertiary} 100%);
     background: ${colors.secondary};
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
     @media (max-width:490px){
-        width: 90%;
+        width: 88%;
+        margin-top: 83px;
         align-items: center;
+        border-radius: 0;
     }
 `
 export const ButtonsContainer = styled.div`
@@ -198,4 +203,15 @@ export const NoConsults = styled.label`
     font-size: 32px;
     margin: 85px;
     color: #c7c5c5;
+`
+export const ModalMessage = styled.label`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 40px;
+    font-weight: 800;
+    @media (max-width:399px) {
+        font-size: 25px;
+    }
 `

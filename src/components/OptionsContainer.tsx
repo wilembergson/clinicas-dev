@@ -77,10 +77,8 @@ const ItemHome = styled.section`
     color: ${colors.secondary};
     padding: 0 12px;
     background: ${colors.clearColor};
-
     font-size: 20px;
     font-weight: 800;
-
     transition: 0.7s ease;
     :hover{
         color: ${colors.clearColor};
@@ -88,7 +86,8 @@ const ItemHome = styled.section`
         transition: 0.7s ease;
     }
     @media (max-width:399px){
-        font-size: medium;
+        font-size: 0;
+        width: 98px;
         height: 90px;
     }
 `

@@ -32,9 +32,10 @@ export const PrincialContent = styled.div`
     border-radius: 10px;
     overflow: hidden;
     width: 650px;
+    padding-bottom: 15px;
     
     @media (max-width:399px){
-        width: auto;
+        width: 92%;
     }
 `
 const Title = styled.h2`

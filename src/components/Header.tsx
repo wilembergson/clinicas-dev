@@ -6,6 +6,7 @@ import UserContext from "../contexts/UserContext"
 import { colors } from "../utils/Colors"
 import { erroMessage } from "../utils/toasts"
 import Logo from "../assets/logo-small.png"
+import ResponsiveLogo from "../assets/logo.png"
 import {MdKeyboardArrowDown} from "react-icons/md"
 import ModalLogout from "./ModalLogout"
 
@@ -32,6 +33,7 @@ export default function Header(){
     return(
         <HeaderBody>
             <LogoImg src={Logo} onClick={()=> token ? navigate('/home') : navigate('/')}/>
+            <LogoImgResponsive src={ResponsiveLogo} onClick={()=> token ? navigate('/home') : navigate('/')}/>
             <ContainerButtons>
                 {token ? 
                     <>
@@ -64,6 +66,7 @@ const ItemDropdown = styled.button`
     background: none;
     border: none;
     cursor: pointer;
+    width: 100%;
     height: 80px;
     padding: 3px;
     font-family: 'Oxygen', sans-serif;
@@ -84,6 +87,19 @@ const LogoImg = styled.img`
     height: 70px;
     margin-top: 5px;
     cursor: pointer;
+    @media (max-width:485px){
+        display: none;
+      }
+`
+const LogoImgResponsive = styled.img`
+    display: none;
+    width: 80px;
+    height: 70px;
+    margin-top: 5px;
+    cursor: pointer;
+    @media (max-width:485px){
+        display: block;
+      }
 `
 const HeaderBody = styled.header`
     display: flex;
@@ -97,7 +113,7 @@ const HeaderBody = styled.header`
     -webkit-backdrop-filter: blur(8.4px);
     border: 1px solid rgba(255, 255, 255, 0.26);
     @media (max-width:399px){
-        width: 399px;
+        
     }
 `
 const Button = styled.button`

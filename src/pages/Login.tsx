@@ -51,33 +51,33 @@ export default function Login(){
     return(
         <>
             <Header/>
-                <ToastContainer/>
-                {!loading ? 
-                    <LoginForm>
-                       <Title>Login</Title>
-                        <Form onSubmit={handleSubmit}>
+            <ToastContainer/>
+            {!loading ? 
+                <LoginForm>
+                   <Title>Login</Title>
+                    <Form onSubmit={handleSubmit}>
                         <Label>EMAIL</Label>
-                                <Input
-                                    placeholder="Email"
-                                    type="email"
-                                    onChange={(e) => handleChange(e)}
-                                    name="email"
-                                    value={formData.email}
-                                    required
-                                />
-                                <Label>SENHA</Label>
-                                <Input
-                                    placeholder="No mínimo 8 dígitos"
-                                    type="password"
-                                    onChange={(e) => handleChange(e)}
-                                    name="password"
-                                    value={formData.password}
-                                    required
-                                />
-                                <Button>Entrar</Button>
-                        </Form> 
-                    </LoginForm> : <Loading/>
-                }   
+                        <Input
+                            placeholder="Email"
+                            type="email"
+                            onChange={(e) => handleChange(e)}
+                            name="email"
+                            value={formData.email}
+                            required
+                        />
+                        <Label>SENHA</Label>
+                        <Input
+                            placeholder="No mínimo 8 dígitos"
+                            type="password"
+                            onChange={(e) => handleChange(e)}
+                            name="password"
+                            value={formData.password}
+                            required
+                        />
+                        <Button>Entrar</Button>
+                    </Form> 
+                </LoginForm> : <Loading/>
+            }   
         </>
     )
 }
@@ -92,10 +92,12 @@ const LoginForm = styled.section`
     padding: 0 30px 0 20px;
     border-radius: 10px;
     background: ${colors.secondary};
-    //background: linear-gradient(90deg, #e16d80 35%, ${colors.tertiary} 100%);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-
     @media (max-width:399px){
         align-items: center;
+        width: 93%;
+        margin-top: 85px;
+        border-radius: 0;
+        padding: 0 15px 0 10px;
     }
 `

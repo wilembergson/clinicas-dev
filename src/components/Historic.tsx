@@ -39,7 +39,6 @@ export default function Historic(){
             :   
                 <NoConsults>Hitórico de consultas vazío</NoConsults>
             }
-            
         </>
     )
 }
@@ -59,5 +58,8 @@ const Item = styled.section`
     :hover{
         transition: 0.7s ease;
         transform: scale(1.04);
+    }
+    @media (max-width:399px){
+        width: 85%;
     }
 `

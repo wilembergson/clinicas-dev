@@ -43,62 +43,62 @@ export default function AddressData(props:any){
             <AddressTitle>Endereço</AddressTitle>
             {edit ? 
                     <Form>
-                        <Label>Número</Label>
-                            <Input
-                                placeholder="Número da sua residência"
-                                type="number"
-                                onChange={(e) => handleChange(e)}
-                                name="number"
-                                value={formData.number}
-                                required
-                            />
-                            <Label>Rua</Label>
-                            <Input
-                                placeholder="Nome da rua ou avenida"
-                                type="text"
-                                onChange={(e) => handleChange(e)}
-                                name="street"
-                                value={formData.street}
-                                required
-                            />
-                            <Label>Bairro</Label>
-                            <Input
-                                placeholder="Nome do seu bairro"
-                                type="text"
-                                onChange={(e) => handleChange(e)}
-                                name="district"
-                                value={formData.district}
-                                required
-                            />
-                            <Label>CIDADE</Label>
-                            <Input
-                                placeholder="Nome da cidade"
-                                type="select"
-                                onChange={(e) => handleChange(e)}
-                                name="city"
-                                value={formData.city}
-                                required
-                            />
-                            <Label>UF</Label>
-                            <Select 
-                                options={Ufs}
-                                onChange={(e)=> {
-                                    const value = e?.value
-                                    if(value) setFormData({...formData, uf:value})
-                                }}
-                            />
-                            <ButtonsContainer>
-                                <Update onClick={() => updateAddress()}>Atualizar</Update>
-                                <Cancel onClick={()=> setEdit(false)}>Cancelar</Cancel>
-                            </ButtonsContainer>
-                    </Form>
-                :
-                    <AddressInfo>
-                        <DivBorder>
-                            <Label>{street}, {number}, {district}, {city}-{uf}</Label>
-                        </DivBorder>
-                        <Button onClick={() => setEdit(true)}><FaEdit/>Editar</Button>
-                    </AddressInfo>
+                    <Label>Número</Label>
+                    <Input
+                        placeholder="Número da sua residência"
+                        type="number"
+                        onChange={(e) => handleChange(e)}
+                        name="number"
+                        value={formData.number}
+                        required
+                    />
+                    <Label>Rua</Label>
+                    <Input
+                        placeholder="Nome da rua ou avenida"
+                        type="text"
+                        onChange={(e) => handleChange(e)}
+                        name="street"
+                        value={formData.street}
+                        required
+                    />
+                    <Label>Bairro</Label>
+                    <Input
+                        placeholder="Nome do seu bairro"
+                        type="text"
+                        onChange={(e) => handleChange(e)}
+                        name="district"
+                        value={formData.district}
+                        required
+                    />
+                    <Label>CIDADE</Label>
+                    <Input
+                        placeholder="Nome da cidade"
+                        type="select"
+                        onChange={(e) => handleChange(e)}
+                        name="city"
+                        value={formData.city}
+                        required
+                    />
+                    <Label>UF</Label>
+                    <Select 
+                        options={Ufs}
+                        onChange={(e)=> {
+                            const value = e?.value
+                            if(value) setFormData({...formData, uf:value})
+                        }}
+                    />
+                    <ButtonsContainer>
+                        <Update onClick={() => updateAddress()}>Atualizar</Update>
+                        <Cancel onClick={()=> setEdit(false)}>Cancelar</Cancel>
+                    </ButtonsContainer>
+                </Form>
+            :    
+                <AddressInfo>
+                    <DivBorder>
+                        <Label>{street}, {number}, {district}, {city}-{uf}</Label>
+                    </DivBorder>
+                    <Button onClick={() => setEdit(true)}><FaEdit/>Editar</Button>
+                </AddressInfo>
             }
             
         </AddressBody>
@@ -111,7 +111,9 @@ const Form = styled.form`
   justify-content: center;
   margin: 40px 20px;
   @media (max-width:399px){
+        width: 90%;
         align-items: center;
+        margin: 40px 0px;
     }
 `
 const Input = styled.input`
@@ -131,8 +133,8 @@ const Input = styled.input`
         box-shadow: 0px 2px 12px  ${colors.primary};
         transition: 0.7s ease;
     }
-  @media (max-width:399px){
-        width: 80%;
+    @media (max-width:399px) {
+        width: 90%;
     }
 `
 const AddressInfo = styled.section`
