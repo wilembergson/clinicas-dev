@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { ToastContainer } from "react-toastify"
 
@@ -85,6 +85,13 @@ export default function Register(){
             erroMessage(errorMessage)
         }
     }
+
+    useEffect(()=>{
+        if(localStorage.getItem("token")){
+            navigation("/home")
+        }
+    },[])
+    
     return(
         <>
             <Header/>

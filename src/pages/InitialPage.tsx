@@ -6,6 +6,7 @@ import { colors } from "../utils/Colors"
 
 export default function InitialPage(){
     const navigate = useNavigate()
+    
     return(
         <>
             <InitialBanner>

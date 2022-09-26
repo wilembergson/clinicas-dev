@@ -112,6 +112,7 @@ const ItemRegister = styled.section`
     }
     @media (max-width:430px){
         font-size: medium;
+        width: 360px;
         height: 90px;
     }
 `
