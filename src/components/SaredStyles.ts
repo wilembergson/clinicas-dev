@@ -32,7 +32,7 @@ export const Label = styled.label`
   font-size: 18px;
   line-height: 15px;
   color: ${colors.clearColor};
-  margin-top: 8px;
+  margin-top: 28px;
   margin-left: 5px;
   @media (max-width:399px){
         width: 100%;

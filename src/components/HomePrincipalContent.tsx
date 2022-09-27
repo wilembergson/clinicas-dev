@@ -28,7 +28,7 @@ export const PrincialContent = styled.div`
     flex-direction: column;
     background: #fff;
     box-shadow: 0px 4px 24px rgba(25, 26, 25, 0.12);
-    margin: 20px 0 40px 0;
+    margin: 20px 0 20px 0;
     border-radius: 10px;
     overflow: hidden;
     width: 650px;

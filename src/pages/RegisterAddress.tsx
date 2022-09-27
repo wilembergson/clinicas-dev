@@ -159,7 +159,7 @@ export default function RegisterAddress(){
 export const ButtonsContainer = styled.div`
     display: flex;
     justify-content: center;
-    margin-top: 30px;
+    margin-top: 5px;
     width: 100%;
 `
 const Confirm = styled.button`

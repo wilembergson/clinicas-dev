@@ -150,6 +150,7 @@ const AddressTitle = styled.div`
     padding: 20px 0;
     color: ${colors.clearColor};
     background: ${colors.secondary};
+    border-radius: 10px 10px 0 0;
     font-family: 'Oxygen', sans-serif;
 `
 const AddressBody = styled.section`
@@ -162,7 +163,6 @@ const AddressBody = styled.section`
     margin-bottom: 50px;
     border-radius: 10px;
     background: ${colors.clearColor};
-    overflow: hidden;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
     @media (max-width:490px){
         width: 90%;

@@ -91,7 +91,7 @@ const LoginForm = styled.section`
     justify-content: center;
     flex-direction: column;
     position: relative;
-    margin-top: 180px;
+    margin-top: 130px;
     padding: 0 30px 0 20px;
     border-radius: 10px;
     background: ${colors.secondary};

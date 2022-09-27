@@ -8,6 +8,7 @@ import Login from "./pages/Login"
 import RegisterAddress from "./pages/RegisterAddress"
 import Register from "./pages/RegisterUser"
 import InitialPage from "./pages/InitialPage"
+import Footer from "./components/Footer"
 
 export default function App(){
     const [userName, setUserName] = useState('')
@@ -16,27 +17,38 @@ export default function App(){
     
     return (
       <UserContext.Provider value={contextValues}>
-        <AppBody>
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<InitialPage/>}/>
-                    <Route path="/login" element={<Login/>}/>
-                    <Route path="/register" element={<Register/>}/>
-                    <Route path="/home" element={<Home/>}/>
-                    <Route path="/address/register" element={<RegisterAddress/>}/>
-                </Routes>
-            </BrowserRouter>
-        </AppBody>
+        <AppAll>
+            <AppBody>
+                <BrowserRouter>
+                    <Routes>
+                        <Route path="/" element={<InitialPage/>}/>
+                        <Route path="/login" element={<Login/>}/>
+                        <Route path="/register" element={<Register/>}/>
+                        <Route path="/home" element={<Home/>}/>
+                        <Route path="/address/register" element={<RegisterAddress/>}/>
+                    </Routes>
+                </BrowserRouter>
+            </AppBody>
+            <Footer/>
+        </AppAll>
       </UserContext.Provider>
     )
 }
+const AppAll = styled.main`
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;    
+    display: flex;
+    justify-content: space-between;
 
+    flex-direction: column;
+`
 const AppBody = styled.main`
     display: flex;
     align-items: center;
     flex-direction: column;
-`
-const BackImage = styled.img`
-    position: fixed;
-    z-index: 0;
+    position: relative;
+    
 `
