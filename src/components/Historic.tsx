@@ -4,11 +4,16 @@ import api from "../api/ApiConections"
 import { colors } from "../utils/Colors"
 import { FieldLabel, Label, NoConsults } from "./SaredStyles"
 
+type HistoricItem = {
+    date: string,
+    specialty: string
+}
+
 export default function Historic(){
     const [historic, setHistoric] = useState<any[]>([])
     
     function adjustData(list:any[]){
-        const result:any[] = []
+        const result:HistoricItem[] = []
         list.forEach(item => {
             const newDate = new Date(item.date)
             const d = newDate.getDate()
