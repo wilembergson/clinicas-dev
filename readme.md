@@ -20,7 +20,6 @@ Deploy: https://clinicas-dev-frontend.vercel.app
 
 ## Tecnologias
 - Typescript
-- Express
 - Styled-components
 - React-toastify
 - React-Icons
