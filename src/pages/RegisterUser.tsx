@@ -10,97 +10,97 @@ import { erroMessage, sucessMessage } from "../utils/toasts"
 import { ButtonsContainer } from "./RegisterAddress"
 
 export type userBody = {
-    cpf:string,
-    name:string,
-    birthDate:string,
-    phone:string,
-    email:string,
-    password:string,
-    repeatPassword:string
+    cpf: string,
+    name: string,
+    birthdate: string,
+    phone: string,
+    email: string,
+    password: string,
+    //repeatPassword:string
 }
 
-export default function Register(){
+export default function Register() {
     const navigation = useNavigate()
     const [loading, setLoading] = useState(false)
-    
-    const initialData:userBody = {
-        cpf:'',
-        name:'',
-        birthDate:'',
-        phone:'',
-        email:'',
-        password:'',
-        repeatPassword:''
+
+    const initialData: userBody = {
+        cpf: '',
+        name: '',
+        birthdate: '',
+        phone: '',
+        email: '',
+        password: '',
+        // repeatPassword:''
     }
     const [formData, setFormData] = useState(initialData)
 
-    function handleChange({ target }:any) {
+    function handleChange({ target }: any) {
         setFormData({ ...formData, [target.name]: target.value })
     }
 
-    function normalizeCPFnumber(value:string){
-        if(value.length===15 || !(/^([0-9.-]{1})$/).test(value[value.length-1])) return
-        if((value.length === 3 || value.length === 7) && value.length>formData.cpf.length){
+    function normalizeCPFnumber(value: string) {
+        if (value.length === 15 || !(/^([0-9.-]{1})$/).test(value[value.length - 1])) return
+        if ((value.length === 3 || value.length === 7) && value.length > formData.cpf.length) {
             setFormData({ ...formData, cpf: `${value}.` })
         }
-        else if((value.length === 4 || value.length === 8) && value.length>formData.cpf.length){
-            const newValue = `${formData.cpf}.${value[value.length-1]}`
+        else if ((value.length === 4 || value.length === 8) && value.length > formData.cpf.length) {
+            const newValue = `${formData.cpf}.${value[value.length - 1]}`
             setFormData({ ...formData, cpf: newValue })
         }
-        else if((value.length === 3 || value.length === 7) && value.length<formData.cpf.length){    
-            setFormData({...formData, cpf:value})
+        else if ((value.length === 3 || value.length === 7) && value.length < formData.cpf.length) {
+            setFormData({ ...formData, cpf: value })
         }
-        else if(value.length === 11 && value.length > formData.cpf.length){
+        else if (value.length === 11 && value.length > formData.cpf.length) {
             setFormData({ ...formData, cpf: `${value}-` })
         }
-        else if(value.length===12 && value.length>formData.cpf.length ){
-            const newValue = `${formData.cpf}-${value[value.length-1]}`
+        else if (value.length === 12 && value.length > formData.cpf.length) {
+            const newValue = `${formData.cpf}-${value[value.length - 1]}`
             setFormData({ ...formData, cpf: newValue })
         }
-        else if(value.length === 11 && value.length < formData.cpf.length){
+        else if (value.length === 11 && value.length < formData.cpf.length) {
             setFormData({ ...formData, cpf: value })
         }
-        else{
+        else {
             setFormData({ ...formData, cpf: value })
-        }   
+        }
     }
-    function handleKeyDown(event:any){
-        if (event.key === 'Backspace' && formData.cpf.length===1){
+    function handleKeyDown(event: any) {
+        if (event.key === 'Backspace' && formData.cpf.length === 1) {
             setFormData({ ...formData, cpf: '' })
         }
     }
 
-    async function handleSubmit(e:any){
+    async function handleSubmit(e: any) {
         e.preventDefault()
         setLoading(true)
-        const user = {...formData}
-        try{
+        const user = { ...formData }
+        try {
             const { data } = await api.createUser(user)
             console.log(data)
             sucessMessage(data.message)
-            setTimeout(()=> navigation('/'), 3000)
-        }catch(error:any){
+            setTimeout(() => navigation('/'), 3000)
+        } catch (error: any) {
             setLoading(false)
-            const errorMessage:string = error.response.data.error
+            const errorMessage: string = error.response.data.error
             erroMessage(errorMessage)
         }
     }
 
-    useEffect(()=>{
-        if(localStorage.getItem("token")){
+    useEffect(() => {
+        if (localStorage.getItem("token")) {
             navigation("/home")
         }
-    },[])
-    
-    return(
+    }, [])
+
+    return (
         <>
-            <Header/>
-            <ToastContainer/>
-            {(loading===false) ? 
+            <Header />
+            <ToastContainer />
+            {(loading === false) ?
                 <RegisterBody>
                     <Title>Cadastre-se</Title>
                     <Form onSubmit={handleSubmit}>
-                    <Label>CPF</Label>
+                        <Label>CPF</Label>
                         <Input
                             placeholder="Ex: 999.999.999-99"
                             type="text"
@@ -123,8 +123,8 @@ export default function Register(){
                         <Input
                             type="date"
                             onChange={(e) => handleChange(e)}
-                            name="birthDate"
-                            value={formData.birthDate}
+                            name="birthdate"
+                            value={formData.birthdate}
                             required
                         />
                         <Label>TELEFONE</Label>
@@ -154,20 +154,20 @@ export default function Register(){
                             value={formData.password}
                             required
                         />
-                        <Label>REPITA A SENHA</Label>
+                        {/*<Label>REPITA A SENHA</Label>
                         <Input
                             placeholder="Repita a senha"
                             type="password"
                             onChange={(e) => handleChange(e)}
-                            name="repeatPassword"
-                            value={formData.repeatPassword}
+                            name=//"repeatPassword"
+                            value={formData//.repeatPassword}
                             required
-                        />
+                        />*/}
                         <ButtonsContainer>
                             <Button>Cadastrar</Button>
                         </ButtonsContainer>
                     </Form>
-                </RegisterBody> : <Loading/>
+                </RegisterBody> : <Loading />
             }
         </>
     )

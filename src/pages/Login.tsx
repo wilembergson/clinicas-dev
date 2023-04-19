@@ -11,51 +11,51 @@ import { erroMessage } from "../utils/toasts"
 import { ButtonsContainer } from "./RegisterAddress"
 
 export type LoginBody = {
-    email:string,
-    password:string
+    email: string,
+    password: string
 }
 
-export default function Login(){
+export default function Login() {
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false)
-    const initialData:LoginBody = {
-        email:'',
-        password:''
+    const initialData: LoginBody = {
+        email: '',
+        password: ''
     }
     const [formData, setFormData] = useState(initialData)
 
-    function handleChange({ target }:any) {
+    function handleChange({ target }: any) {
         setFormData({ ...formData, [target.name]: target.value })
     }
 
-    async function handleSubmit(e:any){
+    async function handleSubmit(e: any) {
         e.preventDefault()
         setLoading(true)
-        const login = {...formData}
-        try{
-            const {data} = await api.login(login)
+        const login = { ...formData }
+        try {
+            const { data } = await api.login(login)
             localStorage.setItem("token", data.token)
             navigate("/home")
             window.location.reload()
-        }catch(error:any){
+        } catch (error: any) {
             setLoading(false)
             erroMessage(error.response.data.error)
         }
     }
 
-    useEffect(()=>{
-        if(localStorage.getItem("token")){
+    useEffect(() => {
+        if (localStorage.getItem("token")) {
             navigate("/home")
         }
-    },[])
+    }, [])
 
-    return(
+    return (
         <>
-            <Header/>
-            <ToastContainer/>
-            {!loading ? 
+            <Header />
+            <ToastContainer />
+            {!loading ?
                 <LoginForm>
-                   <Title>Login</Title>
+                    <Title>Login</Title>
                     <Form onSubmit={handleSubmit}>
                         <Label>EMAIL</Label>
                         <Input
@@ -78,9 +78,9 @@ export default function Login(){
                         <ButtonsContainer>
                             <Button>Entrar</Button>
                         </ButtonsContainer>
-                    </Form> 
-                </LoginForm> : <Loading/>
-            }   
+                    </Form>
+                </LoginForm> : <Loading />
+            }
         </>
     )
 }
