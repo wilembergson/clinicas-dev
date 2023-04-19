@@ -5,113 +5,116 @@ import { userBody } from "../pages/RegisterUser";
 import BASE_URL from "./BaseURL"
 
 export type AddressBody = {
-    number:string
-    street:string
-    district:string
-    city:string
-    uf:string
+    number: string
+    street: string
+    district: string
+    city: string
+    uf: string
 }
 
 export type UpdateBody = {
-    id:number,
-    number:string
-    street:string
-    district:string
-    city:string
-    uf:string
+    id: number,
+    number: string
+    street: string
+    district: string
+    city: string
+    uf: string
 }
 
 export type ConsultType = {
-    specialtyName:string | undefined
-    date:string
+    specialtyName: string | undefined
+    date: string
 }
 
-const token:any = localStorage.getItem("token")
+const token: any = localStorage.getItem("token")
 
-async function createUser(user:userBody){
-    return await axios.post(`${BASE_URL}/user`, user)
+async function createUser(user: userBody) {
+    return await axios.post(`${BASE_URL}/signup`, user)
 }
 
-async function login(data:LoginBody){
-    return await axios.post(`${BASE_URL}/login`, data)
+async function login(data: LoginBody) {
+    console.log(data)
+    const result = await axios.post(`${BASE_URL}/login`, data)
+    console.log(result)
+    return result
 }
 
-function getUserName(){
-    return axios.get(`${BASE_URL}/get-user-name`, {
-        headers:{
-            authorization:`Bearer ${token}`
+function getUserName() {
+    return axios.get(`${BASE_URL}/account-name`, {
+        headers: {
+            authorization: token
         }
     })
 }
 
-async function getAddress(){
+async function getAddress() {
     return await axios.get(`${BASE_URL}/address`, {
-        headers:{
-            authorization:`Bearer ${token}`
+        headers: {
+            authorization: token
         }
     })
 }
 
-function newAddress(data:AddressBody){
-    return axios.post(`${BASE_URL}/address`, 
+function newAddress(data: AddressBody) {
+    return axios.post(`${BASE_URL}/address`,
         data,
         {
-            headers:{
-                authorization:`Bearer ${token}`
+            headers: {
+                authorization: token
             }
         }
     )
 }
 
-function updateAddress(data:UpdateBody){
-    return axios.put(`${BASE_URL}/address`, 
+function updateAddress(data: UpdateBody) {
+    return axios.put(`${BASE_URL}/address`,
         data,
         {
-            headers:{
-                authorization:`Bearer ${token}`
+            headers: {
+                authorization: token
             }
         }
     )
 }
 
-function listSpecialties(){
+function listSpecialties() {
     return axios.get(`${BASE_URL}/specialties`, {
-        headers:{
-            authorization:`Bearer ${token}`
+        headers: {
+            authorization: token
         }
     })
 }
 
-function newConsult(data:ConsultType){
-    return axios.post(`${BASE_URL}/consult`, 
+function newConsult(data: ConsultType) {
+    return axios.post(`${BASE_URL}/consult`,
         data,
         {
-            headers:{
-                authorization:`Bearer ${token}`
+            headers: {
+                authorization: token
             }
         }
     )
 }
 
-function getAvailableDays(specialtyName:string | undefined){
+function getAvailableDays(specialtyName: string | undefined) {
     return axios.get(`${BASE_URL}/specialty-days/${specialtyName}`)
 }
 
-function nextConsult(){
-    return axios.get(`${BASE_URL}/next-consults`,
+function nextConsult() {
+    return axios.get(`${BASE_URL}/next-consult`,
         {
-            headers:{
-                authorization:`Bearer ${token}`
+            headers: {
+                authorization: token
             }
         }
     )
 }
 
-function historic(){
-    return axios.get(`${BASE_URL}/historic`,
+function historic() {
+    return axios.get(`${BASE_URL}/historic-consults`,
         {
-            headers:{
-                authorization:`Bearer ${token}`
+            headers: {
+                authorization: token
             }
         }
     )
