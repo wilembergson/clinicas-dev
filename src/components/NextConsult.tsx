@@ -16,7 +16,7 @@ export default function NextConsult(){
                 const d = new Date(response.data.date)
                 const m = d.getMonth()+1
                 const month = (m<10) ? `0${m}` : `${m}`
-                setDate(`${d.getDate()}/${month}/${d.getFullYear()}`)
+                setDate(`${d.getDate()+1}/${month}/${d.getFullYear()}`)
                 setSpecialty(response.data.specialty.name)
             }
         })

@@ -22,7 +22,7 @@ export type UpdateBody = {
 }
 
 export type ConsultType = {
-    specialtyName: string | undefined
+    specialty: string | undefined
     date: string
 }
 

@@ -16,7 +16,7 @@ export default function Historic(){
         const result:HistoricItem[] = []
         list.forEach(item => {
             const newDate = new Date(item.date)
-            const d = newDate.getDate()
+            const d = newDate.getDate()+1
             const m = newDate.getMonth()+1
             const day = (d<10) ? `0${d}` : `${d}`
             const month = (m<10) ? `0${m}` : `${m}`
@@ -30,7 +30,7 @@ export default function Historic(){
     useEffect(() => {
         const promise = api.historic()
         promise.then(response => adjustData(response.data))
-    })
+    }, [])
 
     return(
         <>

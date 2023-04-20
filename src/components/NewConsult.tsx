@@ -10,66 +10,75 @@ import { ToastContainer } from "react-toastify"
 import { titles } from "./OptionsContainer"
 
 type SpecialtyItem = {
-    id:number,
-    name:string   
+    id: number
+    name: string
+    days: string[]
 }
 
 type SelectItem = {
-    value:string
-    label:string   
+    value: string
+    label: string
+    days: string[]
 }
 
-export default function NewConsult(){
+export default function NewConsult() {
     const { setPrincipalContentTitle } = useContext(UserContext)
     const [loading, setLoading] = useState(false)
     const [specialtyList, setSpecialtylList] = useState<SelectItem[]>([])
-    const [specialtyName, setSpecialtyName] = useState<string | undefined>('')
+    const [specialty, setSpecialty] = useState<string | undefined>('')
     const [date, setDate] = useState('')
-    const [ days, setDays] = useState([])
+    const [days, setDays] = useState<string | undefined>('')
 
-    function toMountSpetialtiesList(list:SpecialtyItem[]){
-        const mountList:any = []
-        list.forEach(item => mountList.push({ value: item.name, label: item.name }))
+    function toMountSpetialtiesList(list: SpecialtyItem[]) {
+        const mountList: any = []
+        list.forEach(item => mountList.push({ value: item.name, label: item.name, days: item.days }))
         setSpecialtylList(mountList)
     }
 
-    async function handleSubmit(e:any){
+    async function handleSubmit(e: any) {
         e.preventDefault()
         setLoading(true)
-        const promise = api.newConsult({specialtyName, date})
+        const promise = api.newConsult({ specialty, date })
         promise.then(response => {
             sucessMessage(response.data.message)
-            setTimeout(()=> {
+            setTimeout(() => {
                 setPrincipalContentTitle(titles.nextConsult)
             }, 3000)
-            
+
         })
-        .catch(error => {
-            setLoading(false)
-            erroMessage(error.response.data.error)
-        })
+            .catch(error => {
+                setLoading(false)
+                erroMessage(error.response.data.error)
+            })
     }
 
     useEffect(() => {
-        const promise =  api.listSpecialties()
-        promise.then(response => toMountSpetialtiesList(response.data))
-        const promise2 =  api.getAvailableDays(specialtyName)
-        promise2.then(response => setDays(response.data))
-        .catch(error => {console.log(error)})
-    },[specialtyName])
+        const promise = api.listSpecialties()
+        promise.then(response => {
+            toMountSpetialtiesList(response.data)
+        }).catch(error => { console.log(error) })
+    }, [specialty])
 
-    return(
+    function getDays(array: string[] | undefined){
+        if(array) return array.join(', ')
+    }
+
+    return (
         <ConsultBody>
-            <ToastContainer/>
+            <ToastContainer />
             <Form onSubmit={handleSubmit}>
                 <FieldLabel>ESPECIALIDADE</FieldLabel>
                 <Select
                     isDisabled={loading}
                     options={specialtyList}
-                    onChange={(e)=> {
+                    onChange={(e) => {
                         const value = e?.value
-                        if(value) setSpecialtyName(value)
+                        const days = getDays(e?.days)
+                        if (value) {
+                            setSpecialty(value)
+                            setDays(days)
                         }
+                    }
                     }
                 />
                 <FieldLabel>DATA</FieldLabel>
@@ -80,10 +89,10 @@ export default function NewConsult(){
                     name="Date"
                     required
                 />
-                <LabelDays>Dias disponívéis: {days.join(', ')}</LabelDays>
+                <LabelDays>Dias disponívéis: {days}</LabelDays>
                 <ButtonsContainer>
                     <Confirm type="submit" disabled={loading}>Salvar</Confirm>
-                    <Cancel type="button" disabled={loading} onClick={()=> setPrincipalContentTitle(titles.nextConsult)}>Cancelar</Cancel>
+                    <Cancel type="button" disabled={loading} onClick={() => setPrincipalContentTitle(titles.nextConsult)}>Cancelar</Cancel>
                 </ButtonsContainer>
             </Form>
         </ConsultBody>
