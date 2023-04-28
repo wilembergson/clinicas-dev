@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 
 import Logo  from "../assets/logo-small.png"
-import Footer from "../components/Footer"
 import { colors } from "../utils/Colors"
 
 export default function InitialPage(){

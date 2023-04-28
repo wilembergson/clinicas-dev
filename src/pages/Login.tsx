@@ -47,7 +47,7 @@ export default function Login() {
         if (localStorage.getItem("token")) {
             navigate("/home")
         }
-    }, [])
+    })
 
     return (
         <>

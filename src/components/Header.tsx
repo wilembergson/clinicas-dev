@@ -22,7 +22,7 @@ export default function Header() {
             .catch(error => {
                 erroMessage(error.response.data)
             })
-    }, [])
+    })
 
     function checkLogin() {
         const isValid = api.isAthenticated().then(response => response.data)

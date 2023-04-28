@@ -8,7 +8,7 @@ import Header from "../components/Header";
 import Loading from "../components/Loading";
 import { Form, Input, Label, RegisterBody, Title } from "../components/SaredStyles";
 import { erroMessage, sucessMessage } from "../utils/toasts";
-import api, { AddressBody } from "../api/ApiConections";
+import api from "../api/ApiConections";
 import AddressData from "../components/AddressData";
 
 export const Ufs = [

@@ -16,7 +16,6 @@ export type userBody = {
     phone: string,
     email: string,
     password: string,
-    //repeatPassword:string
 }
 
 export default function Register() {
@@ -90,7 +89,7 @@ export default function Register() {
         if (localStorage.getItem("token")) {
             navigation("/home")
         }
-    }, [])
+    })
 
     return (
         <>
@@ -154,15 +153,6 @@ export default function Register() {
                             value={formData.password}
                             required
                         />
-                        {/*<Label>REPITA A SENHA</Label>
-                        <Input
-                            placeholder="Repita a senha"
-                            type="password"
-                            onChange={(e) => handleChange(e)}
-                            name=//"repeatPassword"
-                            value={formData//.repeatPassword}
-                            required
-                        />*/}
                         <ButtonsContainer>
                             <Button>Cadastrar</Button>
                         </ButtonsContainer>

@@ -2,7 +2,7 @@ import axios from "axios";
 import { LoginBody } from "../pages/Login";
 
 import { userBody } from "../pages/RegisterUser";
-import BASE_URL from "./BaseURL"
+import API_URL from "./ApiURL"
 
 export type AddressBody = {
     number: string
@@ -29,18 +29,18 @@ export type ConsultType = {
 const token: any = localStorage.getItem("token")
 
 async function createUser(user: userBody) {
-    return await axios.post(`${BASE_URL}/signup`, user)
+    return await axios.post(`${API_URL}/signup`, user)
 }
 
 async function login(data: LoginBody) {
     console.log(data)
-    const result = await axios.post(`${BASE_URL}/login`, data)
+    const result = await axios.post(`${API_URL}/login`, data)
     console.log(result)
     return result
 }
 
 function isAthenticated() {
-    const result = axios.get(`${BASE_URL}/account-name`, {
+    const result = axios.get(`${API_URL}/account-name`, {
         headers: {
             authorization: token
         }
@@ -49,7 +49,7 @@ function isAthenticated() {
 }
 
 function getUserName() {
-    return axios.get(`${BASE_URL}/account-name`, {
+    return axios.get(`${API_URL}/account-name`, {
         headers: {
             authorization: token
         }
@@ -57,7 +57,7 @@ function getUserName() {
 }
 
 async function getAddress() {
-    return await axios.get(`${BASE_URL}/address`, {
+    return await axios.get(`${API_URL}/address`, {
         headers: {
             authorization: token
         }
@@ -65,7 +65,7 @@ async function getAddress() {
 }
 
 function newAddress(data: AddressBody) {
-    return axios.post(`${BASE_URL}/address`,
+    return axios.post(`${API_URL}/address`,
         data,
         {
             headers: {
@@ -76,7 +76,7 @@ function newAddress(data: AddressBody) {
 }
 
 function updateAddress(data: UpdateBody) {
-    return axios.put(`${BASE_URL}/address`,
+    return axios.put(`${API_URL}/address`,
         data,
         {
             headers: {
@@ -87,7 +87,7 @@ function updateAddress(data: UpdateBody) {
 }
 
 function listSpecialties() {
-    return axios.get(`${BASE_URL}/specialties`, {
+    return axios.get(`${API_URL}/specialties`, {
         headers: {
             authorization: token
         }
@@ -95,7 +95,7 @@ function listSpecialties() {
 }
 
 function newConsult(data: ConsultType) {
-    return axios.post(`${BASE_URL}/consult`,
+    return axios.post(`${API_URL}/consult`,
         data,
         {
             headers: {
@@ -106,11 +106,11 @@ function newConsult(data: ConsultType) {
 }
 
 function getAvailableDays(specialtyName: string | undefined) {
-    return axios.get(`${BASE_URL}/specialty-days/${specialtyName}`)
+    return axios.get(`${API_URL}/specialty-days/${specialtyName}`)
 }
 
 function nextConsult() {
-    return axios.get(`${BASE_URL}/next-consult`,
+    return axios.get(`${API_URL}/next-consult`,
         {
             headers: {
                 authorization: token
@@ -120,7 +120,7 @@ function nextConsult() {
 }
 
 function historic() {
-    return axios.get(`${BASE_URL}/historic-consults`,
+    return axios.get(`${API_URL}/historic-consults`,
         {
             headers: {
                 authorization: token

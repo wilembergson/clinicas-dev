@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import Modal from "react-modal"
 import { colors } from "../utils/Colors"
 
 export const Title = styled.h2`

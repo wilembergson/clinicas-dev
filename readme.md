@@ -6,6 +6,12 @@ Deploy: https://clinicas-dev-frontend.vercel.app
 <p>Neste projeto, o usuário pode marcar consultas médicas e acompanha os dias de cada consulta, além de poder acessar o seu hitórico de marcações.</p>
 </br>
 
+## Como iniciar o projeto
+- execute o comando ```npm install```
+- Crie um arquivo ```.env``` na raíz do projeto e preencha de acordo com o ```.env-exemplo``` disponível
+- execute o comando ```npm start``` para rodar o projeto no browser
+</br></br></br>
+
 ## Funcionalidades
 - Criação de usuário
 - Login
@@ -14,9 +20,6 @@ Deploy: https://clinicas-dev-frontend.vercel.app
 - Histórico de consultas
 </br></br></br>
 
-## Como iniciar o projeto
-- npm start
-</br></br></br>
 
 ## Tecnologias
 - Typescript

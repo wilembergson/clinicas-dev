@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import { BrowserRouter, Route, Routes, useNavigate, RouterProps } from "react-router-dom"
+import { useState } from "react"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
 import styled from "styled-components"
 import { titles } from "./components/OptionsContainer"
 import UserContext from "./contexts/UserContext"
