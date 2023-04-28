@@ -1,7 +1,6 @@
-import { FC, ReactNode, useState } from 'react';
+import { FC, ReactNode } from 'react';
 import { useNavigate, Navigate } from 'react-router-dom';
 import api from '../api/ApiConections';
-import jwt from 'jsonwebtoken'
 
 interface Props {
     children: ReactNode

@@ -3,7 +3,6 @@ import { LoginBody } from "../pages/Login";
 
 import { userBody } from "../pages/RegisterUser";
 import BASE_URL from "./BaseURL"
-import { useState } from "react";
 
 export type AddressBody = {
     number: string
@@ -41,14 +40,11 @@ async function login(data: LoginBody) {
 }
 
 function isAthenticated() {
-    //let auth
     const result = axios.get(`${BASE_URL}/account-name`, {
         headers: {
             authorization: token
         }
     })
-    //result.then(response => auth = true).catch()
-    //console.log('API: '+auth)
     return result
 }
 

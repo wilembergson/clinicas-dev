@@ -7,56 +7,56 @@ import { colors } from "../utils/Colors"
 import { erroMessage } from "../utils/toasts"
 import Logo from "../assets/logo-small.png"
 import ResponsiveLogo from "../assets/logo.png"
-import {MdKeyboardArrowDown} from "react-icons/md"
+import { MdKeyboardArrowDown } from "react-icons/md"
 import ModalLogout from "./ModalLogout"
 
-export default function Header(){
+export default function Header() {
     const navigate = useNavigate()
-    const {userName, setUserName} = useContext(UserContext)
+    const { userName, setUserName } = useContext(UserContext)
     const [showModal, setShowModal] = useState(false)
 
-    const token:any = localStorage.getItem("token")
+    const token: any = localStorage.getItem("token")
     useEffect(() => {
         const promise = api.getUserName()
         promise.then(response => setUserName(response.data.name))
-        .catch(error=> {
-            erroMessage(error.response.data)
-        })
-    },[])
+            .catch(error => {
+                erroMessage(error.response.data)
+            })
+    }, [])
 
-    function checkLogin(){
+    function checkLogin() {
         const isValid = api.isAthenticated().then(response => response.data)
-        if(isValid === undefined){
+        if (isValid === undefined) {
             navigate("/login")
-        }else{
+        } else {
             navigate("/home")
         }
     }
 
-    return(
+    return (
         <HeaderBody>
-            <LogoImg src={Logo} onClick={()=> token ? navigate('/home') : navigate('/')}/>
-            <LogoImgResponsive src={ResponsiveLogo} onClick={()=> token ? navigate('/home') : navigate('/')}/>
+            <LogoImg src={Logo} onClick={() => token ? navigate('/home') : navigate('/')} />
+            <LogoImgResponsive src={ResponsiveLogo} onClick={() => token ? navigate('/home') : navigate('/')} />
             <ContainerButtons>
-                {token ? 
+                {token ?
                     <>
                         <Dropdown>
                             <ButtonDropdown>
-                                {userName}                                
-                                <MdKeyboardArrowDown size={'20px'}/>
+                                {userName}
+                                <MdKeyboardArrowDown size={'20px'} />
                             </ButtonDropdown>
                             <ContentDropdown>
-                                <ItemDropdown onClick={()=>navigate('/home')}>Home</ItemDropdown>
-                                <ItemDropdown onClick={()=>navigate('/address/register')}>Endereço</ItemDropdown>
+                                <ItemDropdown onClick={() => navigate('/home')}>Home</ItemDropdown>
+                                <ItemDropdown onClick={() => navigate('/address/register')}>Endereço</ItemDropdown>
                             </ContentDropdown>
                         </Dropdown>
-                        <Button onClick={() => setShowModal(true)}>Sair</Button> 
-                        <ModalLogout show={showModal} setShow={setShowModal}/>
+                        <Button onClick={() => setShowModal(true)}>Sair</Button>
+                        <ModalLogout show={showModal} setShow={setShowModal} />
                     </>
-                :
+                    :
                     <>
-                        <Button onClick={()=>checkLogin()}>Login</Button>
-                        <Button onClick={()=>navigate('/register')}>Cadastre-se</Button>    
+                        <Button onClick={() => checkLogin()}>Login</Button>
+                        <Button onClick={() => navigate('/register')}>Cadastre-se</Button>
                     </>
                 }
             </ContainerButtons>
