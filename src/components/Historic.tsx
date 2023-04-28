@@ -15,12 +15,8 @@ export default function Historic(){
     function adjustData(list:any[]){
         const result:HistoricItem[] = []
         list.forEach(item => {
-            const newDate = new Date(item.date)
-            const d = newDate.getDate()+1
-            const m = newDate.getMonth()+1
-            const day = (d<10) ? `0${d}` : `${d}`
-            const month = (m<10) ? `0${m}` : `${m}`
-            const date = `${day}/${month}/${newDate.getFullYear()}`
+            const dateParts = item.date.split('-');
+            const date = `${dateParts[2]}/${dateParts[1]}/${dateParts[0]}`
             const specialty = item.specialty.name
             result.push({date, specialty})
         })

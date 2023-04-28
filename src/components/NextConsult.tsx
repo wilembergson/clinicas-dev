@@ -5,32 +5,30 @@ import { colors } from "../utils/Colors"
 import { LabelDays } from "./NewConsult"
 import { NoConsults } from "./SaredStyles"
 
-export default function NextConsult(){
+export default function NextConsult() {
     const [specialty, setSpecialty] = useState('')
     const [date, setDate] = useState('')
 
     useEffect(() => {
         const promise = api.nextConsult()
         promise.then(response => {
-            if(response.data.date!==undefined){
-                const d = new Date(response.data.date)
-                const m = d.getMonth()+1
-                const month = (m<10) ? `0${m}` : `${m}`
-                setDate(`${d.getDate()+1}/${month}/${d.getFullYear()}`)
+            if (response.data.date !== undefined) {
+                const dateParts = response.data.date.split('-');
+                setDate(`${dateParts[2]}/${dateParts[1]}/${dateParts[0]}`)
                 setSpecialty(response.data.specialty.name)
             }
         })
-    },[])
-    return(
+    }, [])
+    return (
         <ConsultBody>
-            {date!=='' ? 
+            {date !== '' ?
                 <>
                     <Label>{specialty}</Label>
                     <Label>{date}</Label>
                     <LabelDays>Em caso de cancelamento, basta não comparecer no dia da consulta.</LabelDays>
                 </>
-            :
-                <NoConsults>Não há consultas marcadas</NoConsults>    
+                :
+                <NoConsults>Não há consultas marcadas</NoConsults>
             }
         </ConsultBody>
     )
