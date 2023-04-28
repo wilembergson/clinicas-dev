@@ -19,14 +19,17 @@ export default function Header(){
     useEffect(() => {
         const promise = api.getUserName()
         promise.then(response => setUserName(response.data.name))
-        .catch(error=> erroMessage(error.response.data))
+        .catch(error=> {
+            erroMessage(error.response.data)
+        })
     },[])
 
     function checkLogin(){
-        if(localStorage.getItem("token")){
-            navigate("/home")
-        }else{
+        const isValid = api.isAthenticated().then(response => response.data)
+        if(isValid === undefined){
             navigate("/login")
+        }else{
+            navigate("/home")
         }
     }
 

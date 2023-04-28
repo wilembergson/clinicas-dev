@@ -3,6 +3,7 @@ import { LoginBody } from "../pages/Login";
 
 import { userBody } from "../pages/RegisterUser";
 import BASE_URL from "./BaseURL"
+import { useState } from "react";
 
 export type AddressBody = {
     number: string
@@ -36,6 +37,18 @@ async function login(data: LoginBody) {
     console.log(data)
     const result = await axios.post(`${BASE_URL}/login`, data)
     console.log(result)
+    return result
+}
+
+function isAthenticated() {
+    //let auth
+    const result = axios.get(`${BASE_URL}/account-name`, {
+        headers: {
+            authorization: token
+        }
+    })
+    //result.then(response => auth = true).catch()
+    //console.log('API: '+auth)
     return result
 }
 
@@ -121,6 +134,7 @@ function historic() {
 }
 
 const api = {
+    isAthenticated,
     createUser,
     login,
     getUserName,

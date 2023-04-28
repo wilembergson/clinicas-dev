@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import styled from "styled-components"
 import api from "../api/ApiConections"
 import { colors } from "../utils/Colors"
-import { FieldLabel, Label, NoConsults } from "./SaredStyles"
+import { FieldLabel, NoConsults } from "./SaredStyles"
 
 type HistoricItem = {
     date: string,
