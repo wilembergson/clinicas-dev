@@ -29,4 +29,4 @@ Deploy: https://clinicas-dev-frontend.vercel.app
 </br></br></br>
 
 ## Backend
-- https://github.com/wilembergson/clinicas-dev-backend
+- https://github.com/wilembergson/clinicas-dev-solid
