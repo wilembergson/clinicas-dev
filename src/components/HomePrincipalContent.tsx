@@ -7,8 +7,6 @@ import NewConsult from "./NewConsult"
 import NextConsult from "./NextConsult"
 import { titles } from "./OptionsContainer"
 
-
-
 export default function HomePrincialContent(){
     const { principalContentTitle } = useContext(UserContext)
 

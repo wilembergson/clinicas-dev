@@ -4,10 +4,21 @@ import api from "../api/ApiConections"
 import { colors } from "../utils/Colors"
 import { LabelDays } from "./NewConsult"
 import { NoConsults } from "./SaredStyles"
+import { sucessMessage } from "../utils/toasts"
+import { ToastContainer } from "react-toastify"
 
 export default function NextConsult() {
+    const [consultId, setConsultId] = useState('')
     const [specialty, setSpecialty] = useState('')
     const [date, setDate] = useState('')
+
+    async function cancelConsult(){
+        api.cancelConsult(consultId).then(response => {
+            sucessMessage(response.data.message)
+            setConsultId('')
+        })
+        .catch(error => console.log(error))
+    }
 
     useEffect(() => {
         const promise = api.nextConsult()
@@ -16,16 +27,20 @@ export default function NextConsult() {
                 const dateParts = response.data.date.split('-');
                 setDate(`${dateParts[2]}/${dateParts[1]}/${dateParts[0]}`)
                 setSpecialty(response.data.specialty.name)
+                setConsultId(response.data.id._value)
             }
         })
-    }, [])
+    }, [consultId])
+
     return (
         <ConsultBody>
+            <ToastContainer />
             {date !== '' ?
                 <>
                     <Label>{specialty}</Label>
                     <Label>{date}</Label>
-                    <LabelDays>Em caso de cancelamento, basta não comparecer no dia da consulta.</LabelDays>
+                    <button onClick={() => cancelConsult()}>Desmarcar</button>
+                    <LabelDays>Caso não puder comparercer, por favor, desmarque a consulta.</LabelDays>
                 </>
                 :
                 <NoConsults>Não há consultas marcadas</NoConsults>

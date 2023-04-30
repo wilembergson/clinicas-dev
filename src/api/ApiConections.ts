@@ -105,6 +105,17 @@ function newConsult(data: ConsultType) {
     )
 }
 
+function cancelConsult(id: string) {
+    return axios.put(`${API_URL}/cancel-consult/${id}`,
+        null,
+        {
+            headers: {
+                authorization: token
+            }
+        }
+    )
+}
+
 function getAvailableDays(specialtyName: string | undefined) {
     return axios.get(`${API_URL}/specialty-days/${specialtyName}`)
 }
@@ -139,6 +150,7 @@ const api = {
     updateAddress,
     listSpecialties,
     newConsult,
+    cancelConsult,
     getAvailableDays,
     nextConsult,
     historic
