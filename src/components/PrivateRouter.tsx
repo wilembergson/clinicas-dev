@@ -1,6 +1,7 @@
-import { FC, ReactNode } from 'react';
-import { useNavigate, Navigate } from 'react-router-dom';
+import { FC, ReactNode, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import api from '../api/ApiConections';
+import { erroMessage } from '../utils/toasts';
 
 interface Props {
     children: ReactNode
@@ -9,13 +10,19 @@ interface Props {
 
 const PrivateRouter: FC<Props> = ({ children }) => {
     const navigate = useNavigate()
-    api.isAthenticated().catch(error => {
-        localStorage.clear()
-        navigate('/login')
-    })
     const token: any = localStorage.getItem("token")
+    useEffect(() => {
+        api.isAthenticated(token)
+        .catch(error => {
+            localStorage.clear()
+            navigate('/login')
+            if(error.response.data.error === 'session expired.'){
+                erroMessage(error.response.data.error)
+            }
+        })
+    })
     return (
-        <>{((token) ? children : <Navigate to='/login' />)}</>
+        <>{((token) ? children : <></>)}</>
     );
 };
 

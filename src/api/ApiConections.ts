@@ -39,10 +39,10 @@ async function login(data: LoginBody) {
     return result
 }
 
-function isAthenticated() {
+function isAthenticated(authToken: any) {
     const result = axios.get(`${API_URL}/account-name`, {
         headers: {
-            authorization: token
+            authorization: authToken
         }
     })
     return result

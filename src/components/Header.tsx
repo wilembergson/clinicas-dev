@@ -25,7 +25,7 @@ export default function Header() {
     })
 
     function checkLogin() {
-        const isValid = api.isAthenticated().then(response => response.data)
+        const isValid = api.isAthenticated(token).then(response => response.data)
         if (isValid === undefined) {
             navigate("/login")
         } else {
