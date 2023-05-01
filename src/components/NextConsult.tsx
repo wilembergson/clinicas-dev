@@ -3,7 +3,7 @@ import styled from "styled-components"
 import api from "../api/ApiConections"
 import { colors } from "../utils/Colors"
 import { LabelDays } from "./NewConsult"
-import { NoConsults } from "./SaredStyles"
+import { Cancel, NoConsults } from "./SaredStyles"
 import { sucessMessage } from "../utils/toasts"
 import { ToastContainer } from "react-toastify"
 
@@ -39,8 +39,8 @@ export default function NextConsult() {
                 <>
                     <Label>{specialty}</Label>
                     <Label>{date}</Label>
-                    <button onClick={() => cancelConsult()}>Desmarcar</button>
-                    <LabelDays>Caso não puder comparercer, por favor, desmarque a consulta.</LabelDays>
+                    <CancelButton onClick={() => cancelConsult()}>Cancelar</CancelButton>
+                    <LabelDays>Caso não puder comparercer, por favor, cancele a consulta.</LabelDays>
                 </>
                 :
                 <NoConsults>Não há consultas marcadas</NoConsults>
@@ -48,6 +48,28 @@ export default function NextConsult() {
         </ConsultBody>
     )
 }
+
+const CancelButton = styled.button`
+    color: #FFFFFF;
+    background: #f7433d;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    height: 60px;
+    margin-top: 10px;
+    padding: 0 40px;
+    font-family: 'Oxygen', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    transition: 0.7s ease;
+    :hover{
+        background:#e05d59;
+        transition: 0.7s ease;
+    }
+    @media (max-width:399px){
+        padding: 10px;
+    }
+`
 
 const ConsultBody = styled.section`
     display: flex;
