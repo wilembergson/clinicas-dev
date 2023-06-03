@@ -30,8 +30,6 @@ export default function NextConsult() {
         const promise = api.nextConsult()
         promise.then(response => {
             if (response.data.date !== undefined) {
-                console.log(response.data.date)
-                console.log(hoje)
                 if (response.data.date === hoje) {
                     setConsultToday(true)
                 } else {
@@ -105,7 +103,7 @@ const Label = styled.label`
     }
     `
 const LabelToday = styled.div`
-    color: #30a130;
+    color: #4bb44b;
     background-color: #fff;
     display: flex;
     justify-content: center;
@@ -114,14 +112,14 @@ const LabelToday = styled.div`
     font-family: 'Oxygen', sans-serif;
     font-weight: 800;
     font-size: 30px;
-    width:95%;
-    margin: -9px 0 0px 0;
+    width:60%;
+    margin: -5px 0 0px 0;
     padding: 5px;
-    border: solid 3px #30a130;
+    border: solid 3px #4bb44b;
     border-radius: 15px;
     
     @media (max-width: 430px){
         font-size: 22px;
-        border: solid 2px #30a130;
+        border: solid 2px #4bb44b;
     }
 `
