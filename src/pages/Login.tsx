@@ -32,15 +32,17 @@ export default function Login() {
         e.preventDefault()
         setLoading(true)
         const login = { ...formData }
-        try {
-            const { data } = await api.login(login)
-            localStorage.setItem("token", data.token)
+        const promise = api.login(login).then(response => {
+            console.log(response)
+            localStorage.setItem("token", response.data.token)
             navigate("/home")
             window.location.reload()
-        } catch (error: any) {
+        })
+        promise.catch(error => {
             setLoading(false)
             erroMessage(error.response.data.error)
-        }
+
+        })
     }
 
     useEffect(() => {

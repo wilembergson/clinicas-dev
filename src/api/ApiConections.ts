@@ -32,9 +32,9 @@ async function createUser(user: userBody) {
     return await axios.post(`${API_URL}/signup`, user)
 }
 
-async function login(data: LoginBody) {
+function login(data: LoginBody) {
     console.log(data)
-    const result = await axios.post(`${API_URL}/login`, data)
+    const result = axios.post(`${API_URL}/login`, data)
     console.log(result)
     return result
 }
